@@ -7,8 +7,13 @@ const server = http.createServer((req, res) => {
 
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
   
+  if(req.url === "/currency"){
+      res.end("hello currency");
+  }else{
+    res.end("hello world");
+  }
+
 });
 
 server.listen(port, hostname, () => {
