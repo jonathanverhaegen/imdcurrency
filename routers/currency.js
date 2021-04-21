@@ -1,23 +1,11 @@
 
 const express = require("express");
 const router = express.Router();
+const currencyController = require("../controllers/currency");
 
 
-router.get('/', (req, res) => {
-    res.json({
-        from: "jonathan",
-        to: "stijn",
-        text: "hier is 5 imdcoin"
-    })
-  })
+router.get('/', currencyController.getAll);
 
-  router.get('/:id', (req, res) => {
-      let id= req.params.id;
-    res.json({
-        from: "jonathan",
-        to: "stijn",
-        text: `hier is 5 imdcoin with ${id}`
-    })
-  })
+router.get('/:id', currencyController.getOneById);
 
-  module.exports = router;
+module.exports = router;
