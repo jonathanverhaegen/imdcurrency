@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 
 app.use("/api/currency",routerCurrency);
 
-// app.use("/api/user", routerUser);
+app.use("/api/user", routerUser);
 
 
 

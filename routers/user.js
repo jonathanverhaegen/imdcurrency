@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const userController = require("../controllers/user");
 
-router.post("/:name",(req,res) => {
-    let name = req.params.name;
+router.post("/:name", userController.post)
 
-    res.json({
-        user: name,
-        message: `made new user ${name}`
-    })
-  })
+
+  module.exports = router;
