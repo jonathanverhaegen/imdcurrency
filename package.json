@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jonathanverhaegen/imdcurrency/issues"
   },
-  "homepage": "https://github.com/jonathanverhaegen/imdcurrency#readme"
+  "homepage": "https://github.com/jonathanverhaegen/imdcurrency#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

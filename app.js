@@ -1,21 +1,12 @@
-const http = require('http');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const express = require('express')
+const app = express()
+const port = 3000
 
-const server = http.createServer((req, res) => {
+app.get('/api/currency', (req, res) => {
+  res.send('get the currency');
+})
 
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  
-  if(req.url === "/currency"){
-      res.end("hello currency");
-  }else{
-    res.end("hello world");
-  }
-
-});
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
