@@ -1,18 +1,28 @@
-
-
-
 const getAll = (req,res) => {
     
-        res.send("get transfers");
-   
+    res.json({
+        "status": "succes",
+    })
+
 }
 
 const save = (req,res) => {
-    res.send("post transfers");
+    res.json({
+        "status": "succes",
+        "transfer":{
+            "amount": "amount of coins",
+            "reciever": "name"
+        }
+    })
 };
 
 const getById = (req,res) => {
-    res.send("get transfers by id " + req.params.id);
+
+    let id = req.params.id;
+    res.json({
+        "status": "succes",
+        "id": id
+    })
 };
 
 module.exports.getAll = getAll;
