@@ -47,22 +47,23 @@ const save = (req,res) => {
     
     
     
-    res.json({
-        "status": "succes",
-        "transfer":{
-            "amount": "amount of coins",
-            "reciever": "name"
-        }
-    })
+    
 };
 
 const getById = (req,res) => {
 
     let id = req.params.id;
-    res.json({
-        "status": "succes",
-        "id": id
+
+    Transfer.find({"_id": id}, (err,doc)=>{
+        if(!err){
+            res.json({
+                "status": "succes",
+                "transfer": doc
+            })
+        }
     })
+
+    
 };
 
 module.exports.getAll = getAll;
