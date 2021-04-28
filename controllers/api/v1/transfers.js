@@ -1,25 +1,27 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const transferSchema = new Schema({
-      senderId: String,
-      recieverId: String,
-      text: String,
-      amount: String
-});
+const Transfer = require('../../../models/transfers');
 
-const Transfer = mongoose.model('transfer', transferSchema);
+
+
+
 
 
 
 
 const getAll = (req,res) => {
     Transfer.find((err,doc) => {
+        if(err){
+            res.json({
+                "status": "error",
+                "message": "there was an error while getting the transfers"
+            })
+        }
+
         if(!err){
             res.json({
                 "status": "succes",
                 "data": {
-                    "transfer": doc
+                    "transfers": doc
                 }
             })
         }
@@ -37,6 +39,13 @@ const save = (req,res) => {
     transfer.amount = "5 imd coins";
 
     transfer.save( (err,doc) => {
+        if(err){
+            res.json({
+                "status": "error",
+                "message": "there was an error while posting the transfer"
+            })
+        }
+
         if(!err){
             res.json({
                 "status": "succes",
@@ -46,8 +55,6 @@ const save = (req,res) => {
     })
     
     
-    
-    
 };
 
 const getById = (req,res) => {
@@ -55,6 +62,12 @@ const getById = (req,res) => {
     let id = req.params.id;
 
     Transfer.find({"_id": id}, (err,doc)=>{
+        if(err){
+            res.json({
+                "status": "error",
+                "message": `there was an error while getting the transfer with id: ${id}`
+            })
+        }
         if(!err){
             res.json({
                 "status": "succes",
