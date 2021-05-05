@@ -16,6 +16,10 @@ form {
   margin-right: auto;
 }
 
+.hidden {
+  display: none;
+}
+
 .btn {
   background-color: red;
   padding: 5px;
