@@ -1,33 +1,17 @@
-let btnSignup = document.querySelector(".btn-signup");
+fetch('http://localhost:3000/api/v1/transfers', {
+    "headers": {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+}).then(result => {
+    return result.json();
+}).then(json => {
+    console.log(json);
+}).catch(error => {
 
-btnSignup.addEventListener("click", function(e){
-    e.preventDefault();
-
-    let username = document.querySelector(".username-signup").value;
-    let password = document.querySelector(".password-signup").value;
-
-    console.log(username, password);
-
-    fetch('http://localhost:3000/api/v1/users/signup', {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "username": username,
-            "password": password
-        })
-        }).then(result =>{
-            return result.json();
-        }).then(json => {
-            if(json.status === "succes"){
-                let feedback = document.querySelector(".alert");
-                feedback.textContent = "signup completed";
-                feedback.classList.remove("hidden");
-
-                let token = json.data.token;
-                localStorage.setItem("token", token);
-                window.location.href = "index.html";
-            }
-        })
+    console.log(error)
+    
 })
+
+
+
+
