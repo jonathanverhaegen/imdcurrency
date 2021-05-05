@@ -24,6 +24,10 @@ btnSignup.addEventListener("click", function(e){
                 let feedback = document.querySelector(".alert");
                 feedback.textContent = "signup completed";
                 feedback.classList.remove("hidden");
+
+                let token = json.data.token;
+                localStorage.setItem("token", token);
+                window.location.href = "index.html";
             }
         })
 })

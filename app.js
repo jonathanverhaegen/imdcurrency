@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 const cors = require('cors');
 
+
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
 mongoose.connect('mongodb://localhost:27017/imdcoin', {useNewUrlParser: true, useUnifiedTopology: true});
@@ -13,6 +14,8 @@ mongoose.connect('mongodb://localhost:27017/imdcoin', {useNewUrlParser: true, us
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/api/v1/users');
 const apiV1TranfsersRouter = require('./routes/api/v1/transfers');
+
+const passport =  require('./passport/passport');
 
 var app = express();
 
@@ -30,7 +33,7 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/api/v1/users', usersRouter);
-app.use('/api/v1/transfers', apiV1TranfsersRouter);
+app.use('/api/v1/transfers', passport.authenticate('jwt', { session: false }) , apiV1TranfsersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
