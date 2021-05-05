@@ -9,7 +9,7 @@ mongoose.set('useCreateIndex', true);
 mongoose.connect('mongodb://localhost:27017/imdcoin', {useNewUrlParser: true, useUnifiedTopology: true});
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/api/v1/users');
 const apiV1TranfsersRouter = require('./routes/api/v1/transfers');
 
 var app = express();

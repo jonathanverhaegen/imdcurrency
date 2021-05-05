@@ -2,12 +2,6 @@
 const Transfer = require('../../../models/transfers');
 
 
-
-
-
-
-
-
 const getAll = (req,res) => {
     Transfer.find((err,doc) => {
         if(err){
