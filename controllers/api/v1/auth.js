@@ -6,10 +6,13 @@ const signup = async (req,res,next) => {
 
     console.log(req.body);
     
-    let username = req.body.username;
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
+    let email = req.body.email;
     let password = req.body.password;
+    let coins = 50;
 
-    const user = new User({username: username, coins: 50});
+    const user = new User({firstname: firstname, lastname: lastname, email: email, coins: coins});
     await user.setPassword(password);
     await user.save().then(result =>{
 
