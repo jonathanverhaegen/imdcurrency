@@ -1,0 +1,66 @@
+@import '../fonts';
+@import '../colors';
+.form__container{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.form__title{
+    text-align:center;
+    font-family: $fontImdcoin;
+    margin-top: 75px;
+    color: $jet;
+    font-size:$title;
+}
+
+.form__label{
+    font-family: $fontImdcoin;
+    color: $jet;
+    font-size: $planeText;
+    margin-bottom:10px;
+}
+
+.form__input{
+    border:none;
+    font-size: $planeText;
+    color: $jet;
+    font-size:$planeText;
+    border-radius: 10px;
+    margin-bottom:20px;
+    height:33px;
+    padding-left:10px;
+}
+
+form{
+    margin-top: 50px;
+    display:flex;
+    flex-direction: column;
+    
+}
+
+.form__text{
+    font-family: $fontImdcoin;
+    font-size: $planeText;
+    color: $indigo;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:40px;
+}
+
+.form__link{
+    font-family: $fontImdcoin;
+    font-size: $planeText;
+    color: $indigo;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:-10px;
+}
+
+
+
+.hidden{
+    display:none;
+}
+
+

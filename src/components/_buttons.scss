@@ -1,7 +1,21 @@
+@import '../colors';
+@import '../fonts';
+
 .btn{
-    background-color:red;
-    padding:5px;
+    background-color: $indigo;
+    border:none;
+    font-family: $fontImdcoin;
+    color: $white;
+    font-size: $planeText;
+    border-radius: 10px;
+    padding:12px 24px 12px 24px;
+    text-decoration:none;
+    
     margin-left:auto;
     margin-right:auto;
-    width:150px;
+    text-align: center;
+}
+
+.btn--form{
+    margin-top: 25px;
 }

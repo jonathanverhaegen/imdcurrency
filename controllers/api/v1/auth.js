@@ -8,11 +8,11 @@ const signup = async (req,res,next) => {
     
     let firstname = req.body.firstname;
     let lastname = req.body.lastname;
-    let email = req.body.email;
+    let username = req.body.username;
     let password = req.body.password;
-    // let coins = 50;
+    let coins = 50;
 
-    const user = new User({firstname: firstname, lastname: lastname, email: email});
+    const user = new User({firstname: firstname, lastname: lastname, username: username, coins: coins});
     await user.setPassword(password);
     await user.save().then(result =>{
 
@@ -38,7 +38,9 @@ const signup = async (req,res,next) => {
 }
 
 const login = async (req,res,next) =>{
-    const { user } = await User.authenticate()(req.body.email, req.body.password).then(result => {
+    const { user } = await User.authenticate()(req.body.username, req.body.password).then(result => {
+
+        
 
         if(!result.user){
             return res.json({

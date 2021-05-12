@@ -1,19 +1,57 @@
-.login {
-  width: 60%;
+.form__container {
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.login-title {
+.form__title {
   text-align: center;
+  font-family: "Comfortaa", cursive;
+  margin-top: 75px;
+  color: #353535;
+  font-size: 30px;
+}
+
+.form__label {
+  font-family: "Comfortaa", cursive;
+  color: #353535;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.form__input {
+  border: none;
+  font-size: 20px;
+  color: #353535;
+  font-size: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  height: 33px;
+  padding-left: 10px;
 }
 
 form {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  width: 50%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form__text {
+  font-family: "Comfortaa", cursive;
+  font-size: 20px;
+  color: #284B63;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 40px;
+}
+
+.form__link {
+  font-family: "Comfortaa", cursive;
+  font-size: 20px;
+  color: #284B63;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -10px;
 }
 
 .hidden {
@@ -21,15 +59,29 @@ form {
 }
 
 .btn {
-  background-color: red;
-  padding: 5px;
+  background-color: #284B63;
+  border: none;
+  font-family: "Comfortaa", cursive;
+  color: #FFFFFF;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 12px 24px 12px 24px;
+  text-decoration: none;
   margin-left: auto;
   margin-right: auto;
-  width: 150px;
+  text-align: center;
+}
+
+.btn--form {
+  margin-top: 25px;
 }
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  background-color: #F5F5F5;
 }
 
 /*# sourceMappingURL=style.css.map */

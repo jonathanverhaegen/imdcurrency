@@ -1,4 +1,4 @@
-let btnLogin = document.querySelector(".btn-login");
+let btnLogin = document.querySelector(".btn");
 
 btnLogin.addEventListener("click", function(e){
     
@@ -13,7 +13,7 @@ btnLogin.addEventListener("click", function(e){
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "email": email,
+            "username": email,
             "password": password
         })
         }).then(result =>{
