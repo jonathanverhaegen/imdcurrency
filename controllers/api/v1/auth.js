@@ -10,9 +10,9 @@ const signup = async (req,res,next) => {
     let lastname = req.body.lastname;
     let email = req.body.email;
     let password = req.body.password;
-    let coins = 50;
+    // let coins = 50;
 
-    const user = new User({firstname: firstname, lastname: lastname, email: email, coins: coins});
+    const user = new User({firstname: firstname, lastname: lastname, email: email});
     await user.setPassword(password);
     await user.save().then(result =>{
 
@@ -20,7 +20,7 @@ const signup = async (req,res,next) => {
 
         let token = jwt.sign({
             uid: result._id,
-            username: result.username
+            email: result.email
         },'MyVerySecretWord');
         
         res.json({
@@ -31,13 +31,14 @@ const signup = async (req,res,next) => {
         })
     }).catch(error => {
         res.json({
-            "status": "error"
+            "status": "error",
+            "message": error
         })
     })
 }
 
 const login = async (req,res,next) =>{
-    const { user } = await User.authenticate()(req.body.username, req.body.password).then(result => {
+    const { user } = await User.authenticate()(req.body.email, req.body.password).then(result => {
 
         if(!result.user){
             return res.json({
@@ -48,7 +49,7 @@ const login = async (req,res,next) =>{
 
         let token = jwt.sign({
             uid: result._id,
-            username: result.username
+            email: result.email
         },'MyVerySecretWord');
 
         return res.json({

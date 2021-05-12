@@ -4,7 +4,7 @@ btnLogin.addEventListener("click", function(e){
     
     e.preventDefault();
     
-    let username = document.querySelector(".username").value;
+    let email = document.querySelector(".email").value;
     let password = document.querySelector(".password").value;
 
     fetch('http://localhost:3000/api/v1/users/login', {
@@ -13,7 +13,7 @@ btnLogin.addEventListener("click", function(e){
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "username": username,
+            "email": email,
             "password": password
         })
         }).then(result =>{
