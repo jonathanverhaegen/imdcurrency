@@ -25,17 +25,20 @@ const getAll = (req,res) => {
 }
 
 const save = (req,res) => {
+    
+    let senderId = req.body.senderId;
+    let recieverId = req.body.recieverId;
+    let amount = req.body.amount;
+    let reason = req.body.reason;
+    let text = req.body.text;
 
-    let transfer = new Transfer();
-    transfer.senderId = "1";
-    transfer.recieverId = "2";
-    transfer.text = "test voor transfer";
-    transfer.amount = "5 imd coins";
+    const transfer = new Transfer
+    ({senderId: senderId, recieverId: recieverId, amount: amount, reason: reason, text: text});
 
     transfer.save( (err,doc) => {
         if(err){
             res.json({
-                "status": "error",
+                "status": err,
                 "message": "there was an error while posting the transfer"
             })
         }
