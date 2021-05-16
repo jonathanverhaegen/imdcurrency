@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const transferSchema = new Schema({
     senderId: String,
-    recieverId: String,
+    receiverId: String,
     amount: Number,
     reason: String,
     text: String,
