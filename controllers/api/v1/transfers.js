@@ -103,6 +103,24 @@ const getById = (req,res) => {
     
 };
 
+const leaderboard = (req, res) => {
+    User.find((err, docs) => {
+        if(err){
+            res.json({
+                "status": "error",
+                "message": err
+            })
+        }
+        if(!err){
+            res.json({
+                "status": "succes",
+                "transfer": docs
+            })
+        }
+    }).sort({coins: -1})
+}
+
 module.exports.getAll = getAll;
 module.exports.save = save;
 module.exports.getById = getById;
+module.exports.leaderboard = leaderboard;
