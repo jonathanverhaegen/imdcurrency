@@ -4,11 +4,14 @@ const User = require('../../../models/users');
 
 
 const getAll = (req,res) => {
-    Transfer.find((err,doc) => {
+    // Getting the userId
+    let userId = req.user._id;
+    console.log(userId);
+    Transfer.find({$or:[{"senderId": userId},{"receiverId":userId}]}, {useFindAndModify: false}, (err, docs) => {
         if(err){
             res.json({
                 "status": "error",
-                "message": "there was an error while getting the transfers"
+                "message": err
             })
         }
 
@@ -16,7 +19,7 @@ const getAll = (req,res) => {
             res.json({
                 "status": "succes",
                 "data": {
-                    "transfers": doc
+                    "transfers": docs
                 }
             })
         }
