@@ -85,18 +85,17 @@ const updateCoinAmount = (id, coinsAmount)=>{
 const getById = (req,res) => {
 
     let id = req.params.id;
-
-    Transfer.find({"_id": id}, (err,doc)=>{
+    Transfer.findById(id, {useFindAndModify: false}, (err, docs)=>{
         if(err){
             res.json({
                 "status": "error",
-                "message": `there was an error while getting the transfer with id: ${id}`
+                "message": err
             })
         }
         if(!err){
             res.json({
                 "status": "succes",
-                "transfer": doc
+                "transfer": docs
             })
         }
     })
