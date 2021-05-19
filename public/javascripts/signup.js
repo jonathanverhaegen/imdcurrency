@@ -27,7 +27,7 @@ btnSignup.addEventListener("click", function(e){
         }).then(result =>{
             return result.json();
         }).then(json => {
-            if(json.status === "succes"){
+            if(json.status === "success"){
                 let feedback = document.querySelector(".alert");
                 feedback.textContent = "signup completed";
                 feedback.classList.remove("hidden");
