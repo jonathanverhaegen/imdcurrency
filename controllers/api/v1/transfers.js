@@ -24,7 +24,7 @@ const getAll = (req,res) => {
                 "user": userId
             })
         }
-    });
+    }).sort({_id: -1});
     
 
 }
