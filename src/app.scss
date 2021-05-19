@@ -89,3 +89,11 @@ body{
     display:flex;
     flex-direction: column;
 }
+
+.alert{
+    text-align:center;
+    margin-top: $xl;
+    font-size: $plainText;
+    font-family: $fontImdcoin;
+    color: $brick;
+}

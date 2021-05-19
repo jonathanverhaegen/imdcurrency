@@ -13,7 +13,7 @@ btnSignup.addEventListener("click", function(e){
 
     
 
-    fetch('http://localhost:3000/api/v1/users/signup', {
+    fetch('http://localhost:3000/api/v1/acounts/signup', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'

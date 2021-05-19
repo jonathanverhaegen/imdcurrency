@@ -6,8 +6,6 @@ const userController = require('../../../controllers/api/v1/users');
 
 
 router.get("/", userController.getUser);
-router.post("/signup", authController.signup);
-router.post("/login", authController.login);
 router.get("/leaderboard", transfersController.leaderboard);
 router.get("/:id",userController.getUserById);
 

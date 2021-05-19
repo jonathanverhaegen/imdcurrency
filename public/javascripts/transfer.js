@@ -26,12 +26,19 @@ sendBtn.addEventListener('click', (e) => {
             return result.json();
         }).then(json => {
             
+            //terug sturen naar de wallet
+            window.location.href = "index.html";
+
+        }).catch(error => {
+    
+            console.log(error)
+            
         })
 
 
     }else{
         let feedback = document.querySelector(".alert");
-                feedback.textContent = "please enter a valid number that is higher than 0";
+                feedback.textContent = "Please enter a valid number that is higher than 0";
                 feedback.classList.remove("hidden");
     }
 

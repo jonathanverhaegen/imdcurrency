@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost:27017/imdcoin', {useNewUrlParser: true, us
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/api/v1/users');
 const apiV1TranfsersRouter = require('./routes/api/v1/transfers');
+const apiV1AcountsRouter = require('./routes/api/v1/acounts');
 
 const passport =  require('./passport/passport');
 
@@ -34,6 +35,7 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use('/api/v1/users', passport.authenticate('jwt', { session: false })  ,usersRouter);
 app.use('/api/v1/transfers', passport.authenticate('jwt', { session: false }) , apiV1TranfsersRouter);
+app.use('/api/v1/acounts', apiV1AcountsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
