@@ -1,6 +1,7 @@
 @import 'components/form.scss';
 @import 'components/buttons';
 @import 'components/footer';
+@import 'components/sendCoins';
 @import './colors';
 
 *{
@@ -10,4 +11,76 @@
 
 body{
     background-color: $cultured;
+}
+
+.title{
+    text-align:center;
+    font-family: $fontImdcoin;
+    margin-top: 75px;
+    color: $jet;
+    font-size:$title;
+}
+
+.intertitle{
+    text-align:center;
+    font-family: $fontImdcoin;
+    margin-top: 75px;
+    color: $jet;
+    font-size:$plainText;
+}
+
+
+.intertitle--recent{
+    text-align:left;
+    margin-left:20%;
+}
+
+.userAmount{
+    text-align:center;
+    font-family: $fontImdcoin;
+    color: $ming;
+    font-size:$plainText;
+    margin-top:20px;
+}
+
+.recent__container{
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50px;
+}
+
+.recent__name{
+    font-family: $fontImdcoin;
+    font-size:$plainText;
+    color:$jet;
+}
+
+.recent__amount{
+    font-family: $fontImdcoin;
+    font-size:$plainText;
+    color:$indigo;
+}
+
+.recent__list{
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50px;
+    
+}
+
+.recent{
+    display:flex;
+    gap:60%;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+.current{
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    flex-direction: column;
 }

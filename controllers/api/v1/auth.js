@@ -20,11 +20,11 @@ const signup = async (req,res,next) => {
 
         let token = jwt.sign({
             uid: result._id,
-            email: result.email
+            email: result.username
         },'MyVerySecretWord');
         
         res.json({
-            "status": "succes",
+            "status": "success",
             "data": {
                 "token": token
             }
@@ -38,9 +38,9 @@ const signup = async (req,res,next) => {
 }
 
 const login = async (req,res,next) =>{
-    const { user } = await User.authenticate()(req.body.username, req.body.password).then(result => {
+    const user  = await User.authenticate()(req.body.username, req.body.password).then(result => {
 
-        
+        console.log(result.user);
 
         if(!result.user){
             return res.json({
@@ -50,12 +50,12 @@ const login = async (req,res,next) =>{
         }
 
         let token = jwt.sign({
-            uid: result._id,
-            email: result.email
+            uid: result.user._id,
+            email: result.user.username
         },'MyVerySecretWord');
 
         return res.json({
-            "status": "succes",
+            "status": "success",
             "data": {
                 "token": token
             }

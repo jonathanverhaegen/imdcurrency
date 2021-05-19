@@ -17,10 +17,11 @@ const getAll = (req,res) => {
 
         if(!err){
             res.json({
-                "status": "succes",
+                "status": "success",
                 "data": {
                     "transfers": docs
-                }
+                },
+                "user": userId
             })
         }
     });
@@ -94,7 +95,7 @@ const getById = (req,res) => {
         }
         if(!err){
             res.json({
-                "status": "succes",
+                "status": "success",
                 "transfer": docs
             })
         }
@@ -113,14 +114,36 @@ const leaderboard = (req, res) => {
         }
         if(!err){
             res.json({
-                "status": "succes",
+                "status": "success",
                 "transfer": docs
             })
         }
     }).sort({coins: -1})
-}
+};
+
+const filterAmount = (req,res) => {
+
+    
+
+    Transfer.find({amount: {$gte:20} },(err, docs) => {
+        if(err){
+            res.json({
+                "status": "error",
+                "message": err
+            })
+        }
+
+        if(!err){
+            res.json({
+                "status": "success",
+                "transfer": docs
+            })
+        }
+    });
+};
 
 module.exports.getAll = getAll;
 module.exports.save = save;
 module.exports.getById = getById;
 module.exports.leaderboard = leaderboard;
+module.exports.filterAmount = filterAmount;

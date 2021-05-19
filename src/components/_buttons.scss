@@ -6,7 +6,7 @@
     border:none;
     font-family: $fontImdcoin;
     color: $white;
-    font-size: $planeText;
+    font-size: $plainText;
     border-radius: 10px;
     padding:12px 24px 12px 24px;
     text-decoration:none;
@@ -19,3 +19,8 @@
 .btn--form{
     margin-top: 25px;
 }
+
+.btn--send{
+    margin-top:20px;
+}
+

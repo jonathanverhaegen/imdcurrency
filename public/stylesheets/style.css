@@ -23,14 +23,13 @@
   border: none;
   font-size: 20px;
   color: #353535;
-  font-size: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
   height: 33px;
   padding-left: 10px;
 }
 
-form {
+.form {
   margin-top: 50px;
   display: flex;
   flex-direction: column;
@@ -76,8 +75,13 @@ form {
   margin-top: 25px;
 }
 
+.btn--send {
+  margin-top: 20px;
+}
+
 footer {
   background-color: #3c6e71;
+  margin-top: 100px;
 }
 
 .menu {
@@ -104,12 +108,111 @@ footer {
   width: 50px;
 }
 
+.sendCoins {
+  margin-top: 50px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sendCoins__label {
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  font-size: 20px;
+}
+
+.sendCoins__input {
+  border: none;
+  font-size: 20px;
+  color: #353535;
+  border-radius: 10px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sendCoins__input--amount {
+  width: 10%;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   background-color: #F5F5F5;
+}
+
+.title {
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  margin-top: 75px;
+  color: #353535;
+  font-size: 30px;
+}
+
+.intertitle {
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  margin-top: 75px;
+  color: #353535;
+  font-size: 20px;
+}
+
+.intertitle--recent {
+  text-align: left;
+  margin-left: 20%;
+}
+
+.userAmount {
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  color: #3c6e71;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.recent__container {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+.recent__name {
+  font-family: "Comfortaa", cursive;
+  font-size: 20px;
+  color: #353535;
+}
+
+.recent__amount {
+  font-family: "Comfortaa", cursive;
+  font-size: 20px;
+  color: #284B63;
+}
+
+.recent__list {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+.recent {
+  display: flex;
+  gap: 60%;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.current {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=style.css.map */

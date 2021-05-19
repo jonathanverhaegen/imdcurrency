@@ -1,0 +1,33 @@
+@import '../fonts';
+@import '../colors';
+
+
+.sendCoins{
+    margin-top:50px;
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    flex-direction: column;
+
+}
+
+.sendCoins__label{
+    text-align:center;
+    font-family: $fontImdcoin;
+    font-size:$plainText;
+}
+
+.sendCoins__input{
+    border:none;
+    font-size: $plainText;
+    color: $jet;
+    border-radius: 10px;
+    width:30%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.sendCoins__input--amount{
+    width:10%;
+}

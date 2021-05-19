@@ -1,5 +1,6 @@
 @import '../fonts';
 @import '../colors';
+
 .form__container{
     width:80%;
     margin-left:auto;
@@ -17,22 +18,21 @@
 .form__label{
     font-family: $fontImdcoin;
     color: $jet;
-    font-size: $planeText;
+    font-size: $plainText;
     margin-bottom:10px;
 }
 
 .form__input{
     border:none;
-    font-size: $planeText;
+    font-size: $plainText;
     color: $jet;
-    font-size:$planeText;
     border-radius: 10px;
     margin-bottom:20px;
     height:33px;
     padding-left:10px;
 }
 
-form{
+.form{
     margin-top: 50px;
     display:flex;
     flex-direction: column;
@@ -41,7 +41,7 @@ form{
 
 .form__text{
     font-family: $fontImdcoin;
-    font-size: $planeText;
+    font-size: $plainText;
     color: $indigo;
     margin-left:auto;
     margin-right:auto;
@@ -50,7 +50,7 @@ form{
 
 .form__link{
     font-family: $fontImdcoin;
-    font-size: $planeText;
+    font-size: $plainText;
     color: $indigo;
     margin-left:auto;
     margin-right:auto;
