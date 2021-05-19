@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', indexRouter);
-app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/users', passport.authenticate('jwt', { session: false })  ,usersRouter);
 app.use('/api/v1/transfers', passport.authenticate('jwt', { session: false }) , apiV1TranfsersRouter);
 
 // catch 404 and forward to error handler
