@@ -1,7 +1,7 @@
 @import 'components/form.scss';
 @import 'components/buttons';
 @import 'components/footer';
-@import 'components/sendCoins';
+@import 'components/transfer';
 @import './colors';
 
 *{
@@ -11,6 +11,10 @@
 
 body{
     background-color: $cultured;
+}
+
+.container{
+    margin-top:50px;
 }
 
 .title{

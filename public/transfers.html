@@ -12,20 +12,34 @@
 
     <h1 class="title" >Transactions</h1>
 
-    <div class="sendCoins">
+    <div class="alert hidden">
+        Here is some feedback
+    </div>
 
-        
-            <label class="sendCoins__label" for="amount">send coins</label>
-            <input type="text" class="sendCoins__input sendCoins__input--amount" id="amount" name="amount">
+    <div class="container">
 
-            <label class="sendCoins__label" for="reciever">Reciever</label>
-            <input type="text" class="sendCoins__input" id="reciever" name="reciever">
+        <form class="transfer" action="">
 
-            <label class="sendCoins__label" for="reason">Reason</label>
-            <input type="text" class="sendCoins__input" id="reason" name="reason">
+            <label class="transfer__label" for="amount">Send coins</label>
+            <input type="number" class="transfer__input transfer__input--amount" id="amount" name="amount">
+
+            <label class="transfer__label" for="receiver">Receiver email</label>
+            <input type="text" class="transfer__input" id="receiver" name="receiver">
+
+            <label class="transfer__label" for="reason">Reason</label>
+            <input type="text" class="transfer__input" id="reason" name="reason">
             
-            <label class="sendCoins__label" for="message">Message</label>
-            <input type="text" class="sendCoins__input" id="message" name="message">
+            <label class="transfer__label" for="message">Message</label>
+            <input type="text" class="transfer__input" id="message" name="message">
+
+            <span class="transfer__btn">
+                <a class="btn" href="" id="sendCoins">send coins</a>
+            </span>
+            
+
+        </form>
+
+            
 
             
        
@@ -63,6 +77,6 @@
     
 </footer>
 
-<script src="javascripts/app.js"></script>
+<script src="javascripts/transfer.js"></script>
 </body>
 </html>
