@@ -3,7 +3,7 @@ let sendBtn = document.querySelector('#sendCoins');
 sendBtn.addEventListener('click', (e) => {
     e.preventDefault();
     
-    let amount = document.querySelector("#amount").value;
+    let amount = parseInt(document.querySelector("#amount").value);
     let receiver = document.querySelector("#receiver").value
     let reason =  document.querySelector("#reason").value;
     let message =  document.querySelector("#message").value;
