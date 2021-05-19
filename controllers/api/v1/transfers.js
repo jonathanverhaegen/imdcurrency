@@ -34,8 +34,11 @@ const save = async (req,res) => {
     let receiverUsername = await User.find({username: req.body.receiverMail});
     // Getting id of logged in user
     let senderId = req.user._id;
+    
     // Getting the id out of the object
     let receiverId = receiverUsername[0]._id;
+    
+    
     let amount = req.body.amount;
     let reason = req.body.reason;
     let text = req.body.text;
@@ -64,7 +67,7 @@ const save = async (req,res) => {
             if(!err){
                 res.json({
                     "status": "succes",
-                    "transfer": doc
+                    "transfer": doc,
                 })
             }
         })

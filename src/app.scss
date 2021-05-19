@@ -60,6 +60,7 @@ body{
     font-family: $fontImdcoin;
     font-size:$plainText;
     color:$indigo;
+    grid-column-start: 3;
 }
 
 .recent__list{
@@ -71,10 +72,10 @@ body{
 }
 
 .recent{
-    display:flex;
-    gap:60%;
+    display: grid;
     justify-content:center;
     margin-bottom:20px;
+    grid-template-columns: 1fr 7fr 1fr;
 }
 
 .current{

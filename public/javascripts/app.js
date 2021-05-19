@@ -1,3 +1,9 @@
+//data van de user ophalen
+
+
+
+
+//transfers ophalen
 fetch('http://localhost:3000/api/v1/transfers', {
     "headers": {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -5,7 +11,7 @@ fetch('http://localhost:3000/api/v1/transfers', {
 }).then(result => {
     return result.json();
 }).then(json => {
-    console.log(json);
+    // console.log(json);
 
     let transfers = json.data.transfers;
     let userId = json.user;
@@ -13,7 +19,6 @@ fetch('http://localhost:3000/api/v1/transfers', {
     //lopen over de transfers
     transfers.forEach((transfer) => {
         let amount = transfer.amount;
-        
         let senderId = transfer.senderId;
         let receiverId = transfer.receiverId;
         
@@ -35,13 +40,68 @@ fetch('http://localhost:3000/api/v1/transfers', {
             recent.appendChild(recentName);
             recent.append(recentAmount);
 
-            recentName.innerHTML = "Stijn";
+            //naam van de reciever gaan halen en invullen
+            
+                fetch('http://localhost:3000/api/v1/users/' + receiverId, {
+                "headers": {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+                }).then(result => {
+                    return result.json();
+                }).then(json => {
+                    console.log(json);
+                   let firstName = json.user.firstname;
+                   recentName.innerHTML = firstName;
+                }).catch(error => {
+    
+                    console.log(error)
+    
+                })
+            
+            
+
+            //amount invullen en inkleuren
             recentAmount.innerHTML = "-" + amount;
             recentAmount.style.color = "#C83E4D"
 
 
-        }else{
-            //ontvangen dus moet de tekst in blauw
+        }
+
+        if(receiverId === userId){
+            let recent = document.createElement('li');
+            let recentAmount = document.createElement('p');
+            let recentName = document.createElement('p');
+
+            recent.className = "recent";
+            recentAmount.className = "recent__amount";
+            recentName.className = "recent__name";
+            
+            recentList.appendChild(recent);
+            recent.appendChild(recentName);
+            recent.append(recentAmount);
+
+            //naam van de reciever gaan halen en invullen
+            
+                fetch('http://localhost:3000/api/v1/users/' + senderId, {
+                "headers": {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+                }).then(result => {
+                    return result.json();
+                }).then(json => {
+                    
+                   let firstName = json.user.firstname;
+                   recentName.innerHTML = firstName;
+                }).catch(error => {
+    
+                    console.log(error)
+    
+                })
+            
+            
+
+            //amount invullen en inkleuren
+            recentAmount.innerHTML = amount;
         }
 
 
@@ -53,6 +113,8 @@ fetch('http://localhost:3000/api/v1/transfers', {
     console.log(error)
     
 })
+
+
 
 
 

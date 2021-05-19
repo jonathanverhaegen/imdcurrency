@@ -191,6 +191,7 @@ body {
   font-family: "Comfortaa", cursive;
   font-size: 20px;
   color: #284B63;
+  grid-column-start: 3;
 }
 
 .recent__list {
@@ -201,10 +202,10 @@ body {
 }
 
 .recent {
-  display: flex;
-  gap: 60%;
+  display: grid;
   justify-content: center;
   margin-bottom: 20px;
+  grid-template-columns: 1fr 7fr 1fr;
 }
 
 .current {
