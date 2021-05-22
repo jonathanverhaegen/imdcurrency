@@ -132,10 +132,7 @@ fetch('http://localhost:3000/api/v1/transfers', {
 })
 
 
-
-
-
-let logoutBtns = document.querySelector("#logout");
+let logout = document.querySelector("#logout");
 
 logout.addEventListener("click", (e) => {
     e.preventDefault();

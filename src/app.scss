@@ -30,6 +30,12 @@ body{
     font-size:$title;
 }
 
+@media(min-width:800px){
+    .container{
+        width:40%;
+    }
+}
+
 
 
 
