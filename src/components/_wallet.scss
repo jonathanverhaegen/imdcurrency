@@ -1,0 +1,25 @@
+@import '../fonts';
+@import '../colors';
+@import '../spacing';
+
+.wallet{
+    display:flex;
+    flex-direction: column;
+    margin-top: $xl;
+}
+
+.wallet__title{
+    text-align:center;
+    font-family: $fontImdcoin;
+    color: $jet;
+    font-size:$plainText;
+    margin-bottom: $med;
+}
+
+.wallet__amount{
+    text-align:center;
+    font-family: $fontImdcoin;
+    color: $ming;
+    font-size:$plainText;
+    margin-bottom: $med;
+}

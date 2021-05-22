@@ -4,8 +4,8 @@ btnLogin.addEventListener("click", function(e){
     
     e.preventDefault();
     
-    let email = document.querySelector(".email").value;
-    let password = document.querySelector(".password").value;
+    let email = document.querySelector("#email").value;
+    let password = document.querySelector("#password").value;
 
     fetch('http://localhost:3000/api/v1/acounts/login', {
         method: 'post',
@@ -30,8 +30,8 @@ btnLogin.addEventListener("click", function(e){
                 
             }else{
 
-                let feedback = document.querySelector(".alert");
-                feedback.textContent = "Login failed";
+                let feedback = document.querySelector(".form__alert");
+                feedback.textContent = "Wrong email or password";
                 feedback.classList.remove("hidden");
 
             }

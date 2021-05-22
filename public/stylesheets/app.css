@@ -1,14 +1,7 @@
-.form__container {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto; }
-
-.form__title {
-  text-align: center;
-  font-family: "Comfortaa", cursive;
-  margin-top: 75px;
-  color: #353535;
-  font-size: 30px; }
+.form {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column; }
 
 .form__label {
   font-family: "Comfortaa", cursive;
@@ -22,13 +15,8 @@
   color: #353535;
   border-radius: 10px;
   margin-bottom: 20px;
-  height: 33px;
+  height: 35px;
   padding-left: 10px; }
-
-.form {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column; }
 
 .form__text {
   font-family: "Comfortaa", cursive;
@@ -44,7 +32,15 @@
   color: #284B63;
   margin-left: auto;
   margin-right: auto;
-  margin-top: -10px; }
+  margin-top: 10px; }
+
+.form__alert {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 35px;
+  font-size: 20px;
+  font-family: "Comfortaa", cursive;
+  color: #C83E4D; }
 
 .hidden {
   display: none; }
@@ -61,12 +57,6 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center; }
-
-.btn--form {
-  margin-top: 25px; }
-
-.btn--send {
-  margin-top: 20px; }
 
 footer {
   background-color: #3c6e71;
@@ -104,7 +94,7 @@ footer {
   text-align: center;
   font-family: "Comfortaa", cursive;
   font-size: 20px;
-  margin-top: 20px;
+  margin-top: 35px;
   padding-bottom: 10px; }
 
 .transfer__input {
@@ -123,6 +113,58 @@ footer {
   margin-top: 50px;
   display: flex; }
 
+.wallet {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px; }
+
+.wallet__title {
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  color: #353535;
+  font-size: 20px;
+  margin-bottom: 20px; }
+
+.wallet__amount {
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  color: #3c6e71;
+  font-size: 20px;
+  margin-bottom: 20px; }
+
+.transactions {
+  margin-top: 50px; }
+
+.transactions__title {
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  margin-top: 75px;
+  color: #353535;
+  font-size: 20px; }
+
+.transactions__list {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px; }
+
+.transactions__item {
+  display: grid;
+  justify-content: center;
+  margin-bottom: 20px;
+  grid-template-columns: 1fr 7fr 1fr; }
+
+.transaction__item__name {
+  font-family: "Comfortaa", cursive;
+  font-size: 20px;
+  color: #353535; }
+
+.transaction__item__amount {
+  font-family: "Comfortaa", cursive;
+  font-size: 20px;
+  color: #284B63;
+  grid-column-start: 3; }
+
 * {
   box-sizing: border-box; }
 
@@ -130,7 +172,10 @@ body {
   background-color: #F5F5F5; }
 
 .container {
-  margin-top: 50px; }
+  margin-top: 50px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; }
 
 .title {
   text-align: center;
@@ -138,64 +183,3 @@ body {
   margin-top: 75px;
   color: #353535;
   font-size: 30px; }
-
-.intertitle {
-  text-align: center;
-  font-family: "Comfortaa", cursive;
-  margin-top: 75px;
-  color: #353535;
-  font-size: 20px; }
-
-.intertitle--recent {
-  text-align: left;
-  margin-left: 20%; }
-
-.userAmount {
-  text-align: center;
-  font-family: "Comfortaa", cursive;
-  color: #3c6e71;
-  font-size: 20px;
-  margin-top: 20px; }
-
-.recent__container {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px; }
-
-.recent__name {
-  font-family: "Comfortaa", cursive;
-  font-size: 20px;
-  color: #353535; }
-
-.recent__amount {
-  font-family: "Comfortaa", cursive;
-  font-size: 20px;
-  color: #284B63;
-  grid-column-start: 3; }
-
-.recent__list {
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px; }
-
-.recent {
-  display: grid;
-  justify-content: center;
-  margin-bottom: 20px;
-  grid-template-columns: 1fr 7fr 1fr; }
-
-.current {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column; }
-
-.alert {
-  text-align: center;
-  margin-top: 50px;
-  font-size: 20px;
-  font-family: "Comfortaa", cursive;
-  color: #C83E4D; }

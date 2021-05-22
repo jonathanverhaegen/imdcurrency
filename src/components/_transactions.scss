@@ -1,0 +1,42 @@
+@import '../fonts';
+@import '../colors';
+@import '../spacing';
+
+.transactions{
+    margin-top:50px;
+}
+
+.transactions__title{
+    text-align:center;
+    font-family: $fontImdcoin;
+    margin-top: 75px;
+    color: $jet;
+    font-size:$plainText;
+}
+
+.transactions__list{
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50px;
+}
+
+.transactions__item{
+    display: grid;
+    justify-content:center;
+    margin-bottom:20px;
+    grid-template-columns: 1fr 7fr 1fr;
+}
+
+.transaction__item__name{
+    font-family: $fontImdcoin;
+    font-size:$plainText;
+    color:$jet;
+}
+
+.transaction__item__amount{
+    font-family: $fontImdcoin;
+    font-size:$plainText;
+    color:$indigo;
+    grid-column-start: 3;
+}

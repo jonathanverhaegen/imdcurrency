@@ -2,6 +2,8 @@
 @import 'components/buttons';
 @import 'components/footer';
 @import 'components/transfer';
+@import 'components/wallet';
+@import 'components/transactions';
 @import './colors';
 
 *{
@@ -15,6 +17,9 @@ body{
 
 .container{
     margin-top:50px;
+    width: 80%;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .title{
@@ -25,75 +30,6 @@ body{
     font-size:$title;
 }
 
-.intertitle{
-    text-align:center;
-    font-family: $fontImdcoin;
-    margin-top: 75px;
-    color: $jet;
-    font-size:$plainText;
-}
 
 
-.intertitle--recent{
-    text-align:left;
-    margin-left:20%;
-}
 
-.userAmount{
-    text-align:center;
-    font-family: $fontImdcoin;
-    color: $ming;
-    font-size:$plainText;
-    margin-top:20px;
-}
-
-.recent__container{
-    width:60%;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:50px;
-}
-
-.recent__name{
-    font-family: $fontImdcoin;
-    font-size:$plainText;
-    color:$jet;
-}
-
-.recent__amount{
-    font-family: $fontImdcoin;
-    font-size:$plainText;
-    color:$indigo;
-    grid-column-start: 3;
-}
-
-.recent__list{
-    width:50%;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:50px;
-    
-}
-
-.recent{
-    display: grid;
-    justify-content:center;
-    margin-bottom:20px;
-    grid-template-columns: 1fr 7fr 1fr;
-}
-
-.current{
-    width:60%;
-    margin-left:auto;
-    margin-right:auto;
-    display:flex;
-    flex-direction: column;
-}
-
-.alert{
-    text-align:center;
-    margin-top: $xl;
-    font-size: $plainText;
-    font-family: $fontImdcoin;
-    color: $brick;
-}

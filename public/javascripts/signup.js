@@ -6,10 +6,10 @@ btnSignup.addEventListener("click", function(e){
     e.preventDefault();
     
 
-    let firstname = document.querySelector(".firstname").value;
-    let lastname = document.querySelector(".lastname").value;
-    let email = document.querySelector(".email").value;
-    let password = document.querySelector(".password").value;
+    let firstname = document.querySelector("#firstname").value;
+    let lastname = document.querySelector("#lastname").value;
+    let email = document.querySelector("#email").value;
+    let password = document.querySelector("#password").value;
 
     
 
@@ -28,14 +28,14 @@ btnSignup.addEventListener("click", function(e){
             return result.json();
         }).then(json => {
             if(json.status === "success"){
-                let feedback = document.querySelector(".alert");
-                feedback.textContent = "signup completed";
-                feedback.classList.remove("hidden");
-
-                let token = json.data.token;
                 
+                let token = json.data.token;
                 localStorage.setItem("token", token);
                 window.location.href = "index.html";
+            }else{
+                let feedback = document.querySelector(".form__alert");
+                feedback.textContent = "Something went wrong";
+                feedback.classList.remove("hidden");
             }
         })
 })

@@ -1,43 +1,34 @@
 @import '../fonts';
 @import '../colors';
+@import '../spacing';
 
-.form__container{
-    width:80%;
-    margin-left:auto;
-    margin-right:auto;
-}
 
-.form__title{
-    text-align:center;
-    font-family: $fontImdcoin;
-    margin-top: 75px;
-    color: $jet;
-    font-size:$title;
+
+.form{
+    margin-top: $xl;
+    display:flex;
+    flex-direction: column;
+    
 }
 
 .form__label{
     font-family: $fontImdcoin;
     color: $jet;
     font-size: $plainText;
-    margin-bottom:10px;
+    margin-bottom: $small;
 }
 
 .form__input{
     border:none;
     font-size: $plainText;
     color: $jet;
-    border-radius: 10px;
-    margin-bottom:20px;
-    height:33px;
-    padding-left:10px;
+    border-radius: $small;
+    margin-bottom: $med;
+    height: $lg;
+    padding-left: $small;
 }
 
-.form{
-    margin-top: 50px;
-    display:flex;
-    flex-direction: column;
-    
-}
+
 
 .form__text{
     font-family: $fontImdcoin;
@@ -54,7 +45,17 @@
     color: $indigo;
     margin-left:auto;
     margin-right:auto;
-    margin-top:-10px;
+    margin-top: 10px;
+}
+
+.form__alert{
+    text-align:center;
+    margin-top: $small;
+    margin-bottom: $lg;
+    font-size: $plainText;
+    font-family: $fontImdcoin;
+    color: $brick;
+
 }
 
 

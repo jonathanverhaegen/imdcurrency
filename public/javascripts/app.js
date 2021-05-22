@@ -8,7 +8,7 @@
             }).then(json => {
                     console.log(json);
                     let amount =  json.amount;
-                    let currentAmount = document.querySelector(".userAmount");
+                    let currentAmount = document.querySelector(".wallet__amount");
                     currentAmount.innerHTML = amount
                 
             }).catch(error => {
@@ -39,7 +39,7 @@ fetch('http://localhost:3000/api/v1/transfers', {
         let senderId = transfer.senderId;
         let receiverId = transfer.receiverId;
         
-        let recentList = document.querySelector(".recent__list");
+        let recentList = document.querySelector(".transactions__list");
         
         //checken of het verstuurd is of ontvangen
         if(senderId === userId){
@@ -49,9 +49,9 @@ fetch('http://localhost:3000/api/v1/transfers', {
             let recentAmount = document.createElement('p');
             let recentName = document.createElement('p');
 
-            recent.className = "recent";
-            recentAmount.className = "recent__amount";
-            recentName.className = "recent__name";
+            recent.className = "transactions__item";
+            recentAmount.className = "transaction__item__amount";
+            recentName.className = "transaction__item__name";
             
             recentList.appendChild(recent);
             recent.appendChild(recentName);
@@ -89,9 +89,9 @@ fetch('http://localhost:3000/api/v1/transfers', {
             let recentAmount = document.createElement('p');
             let recentName = document.createElement('p');
 
-            recent.className = "recent";
-            recentAmount.className = "recent__amount";
-            recentName.className = "recent__name";
+            recent.className = "transactions__item";
+            recentAmount.className = "transaction__item__amount";
+            recentName.className = "transaction__item__name";
             
             recentList.appendChild(recent);
             recent.appendChild(recentName);
