@@ -1,23 +1,20 @@
 .form__container {
   width: 80%;
   margin-left: auto;
-  margin-right: auto;
-}
+  margin-right: auto; }
 
 .form__title {
   text-align: center;
   font-family: "Comfortaa", cursive;
   margin-top: 75px;
   color: #353535;
-  font-size: 30px;
-}
+  font-size: 30px; }
 
 .form__label {
   font-family: "Comfortaa", cursive;
   color: #353535;
   font-size: 20px;
-  margin-bottom: 10px;
-}
+  margin-bottom: 10px; }
 
 .form__input {
   border: none;
@@ -26,14 +23,12 @@
   border-radius: 10px;
   margin-bottom: 20px;
   height: 33px;
-  padding-left: 10px;
-}
+  padding-left: 10px; }
 
 .form {
   margin-top: 50px;
   display: flex;
-  flex-direction: column;
-}
+  flex-direction: column; }
 
 .form__text {
   font-family: "Comfortaa", cursive;
@@ -41,8 +36,7 @@
   color: #284B63;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
-}
+  margin-top: 40px; }
 
 .form__link {
   font-family: "Comfortaa", cursive;
@@ -50,12 +44,10 @@
   color: #284B63;
   margin-left: auto;
   margin-right: auto;
-  margin-top: -10px;
-}
+  margin-top: -10px; }
 
 .hidden {
-  display: none;
-}
+  display: none; }
 
 .btn {
   background-color: #284B63;
@@ -68,21 +60,17 @@
   text-decoration: none;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
-}
+  text-align: center; }
 
 .btn--form {
-  margin-top: 25px;
-}
+  margin-top: 25px; }
 
 .btn--send {
-  margin-top: 20px;
-}
+  margin-top: 20px; }
 
 footer {
   background-color: #3c6e71;
-  margin-top: 100px;
-}
+  margin-top: 100px; }
 
 .menu {
   display: flex;
@@ -93,36 +81,31 @@ footer {
   gap: 10%;
   justify-content: center;
   padding-top: 2%;
-  padding-bottom: 2%;
-}
+  padding-bottom: 2%; }
 
 .menu__link {
   text-decoration: none;
   color: #353535;
   text-align: center;
   font-family: "Comfortaa", cursive;
-  font-size: 14px;
-}
+  font-size: 14px; }
 
 .menu__img {
-  width: 50px;
-}
+  width: 50px; }
 
 .transfer {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  flex-direction: column;
-}
+  flex-direction: column; }
 
 .transfer__label {
   text-align: center;
   font-family: "Comfortaa", cursive;
   font-size: 20px;
   margin-top: 20px;
-  padding-bottom: 10px;
-}
+  padding-bottom: 10px; }
 
 .transfer__input {
   border: none;
@@ -131,107 +114,88 @@ footer {
   border-radius: 10px;
   width: 60%;
   margin-left: auto;
-  margin-right: auto;
-}
+  margin-right: auto; }
 
 .transfer__input--amount {
-  width: 30%;
-}
+  width: 30%; }
 
 .transfer__btn {
   margin-top: 50px;
-  display: flex;
-}
+  display: flex; }
 
 * {
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 body {
-  background-color: #F5F5F5;
-}
+  background-color: #F5F5F5; }
 
 .container {
-  margin-top: 50px;
-}
+  margin-top: 50px; }
 
 .title {
   text-align: center;
   font-family: "Comfortaa", cursive;
   margin-top: 75px;
   color: #353535;
-  font-size: 30px;
-}
+  font-size: 30px; }
 
 .intertitle {
   text-align: center;
   font-family: "Comfortaa", cursive;
   margin-top: 75px;
   color: #353535;
-  font-size: 20px;
-}
+  font-size: 20px; }
 
 .intertitle--recent {
   text-align: left;
-  margin-left: 20%;
-}
+  margin-left: 20%; }
 
 .userAmount {
   text-align: center;
   font-family: "Comfortaa", cursive;
   color: #3c6e71;
   font-size: 20px;
-  margin-top: 20px;
-}
+  margin-top: 20px; }
 
 .recent__container {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
-}
+  margin-top: 50px; }
 
 .recent__name {
   font-family: "Comfortaa", cursive;
   font-size: 20px;
-  color: #353535;
-}
+  color: #353535; }
 
 .recent__amount {
   font-family: "Comfortaa", cursive;
   font-size: 20px;
   color: #284B63;
-  grid-column-start: 3;
-}
+  grid-column-start: 3; }
 
 .recent__list {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
-}
+  margin-top: 50px; }
 
 .recent {
   display: grid;
   justify-content: center;
   margin-bottom: 20px;
-  grid-template-columns: 1fr 7fr 1fr;
-}
+  grid-template-columns: 1fr 7fr 1fr; }
 
 .current {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  flex-direction: column;
-}
+  flex-direction: column; }
 
 .alert {
   text-align: center;
   margin-top: 50px;
   font-size: 20px;
   font-family: "Comfortaa", cursive;
-  color: #C83E4D;
-}
-
-/*# sourceMappingURL=style.css.map */
+  color: #C83E4D; }
