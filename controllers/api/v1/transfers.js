@@ -6,7 +6,7 @@ const User = require('../../../models/users');
 const getAll = (req,res) => {
     // Getting the userId
     let userId = req.user._id;
-    console.log(userId);
+    
     Transfer.find({$or:[{"senderId": userId},{"receiverId":userId}]}, {useFindAndModify: false}, (err, docs) => {
         if(err){
             res.json({

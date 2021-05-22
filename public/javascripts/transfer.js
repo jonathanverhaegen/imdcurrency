@@ -1,3 +1,11 @@
+primus = Primus.connect("/", {
+    reconnect: {
+        max: Infinity // Number: The max delay before we try to reconnect.
+      , min: 500 // Number: The minimum delay before we try reconnect.
+      , retries: 10 // Number: How many times we should try to reconnect.
+    }
+  });
+
 let sendBtn = document.querySelector('#sendCoins');
 
 sendBtn.addEventListener('click', (e) => {
@@ -26,6 +34,11 @@ sendBtn.addEventListener('click', (e) => {
             return result.json();
         }).then(json => {
             
+            primus.write({
+                "action": "add transfer",
+                "data": json
+            });
+
             //terug sturen naar de wallet
             window.location.href = "index.html";
 

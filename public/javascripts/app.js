@@ -1,3 +1,6 @@
+
+
+
 //data van de user ophalen
     fetch('http://localhost:3000/api/v1/users', {
         "headers": {
@@ -6,10 +9,8 @@
             }).then(result => {
                 return result.json();
             }).then(json => {
-                    console.log(json);
-                    let amount =  json.amount;
-                    let currentAmount = document.querySelector(".wallet__amount");
-                    currentAmount.innerHTML = amount
+                    
+                    addAmount(json);
                 
             }).catch(error => {
     
@@ -17,19 +18,15 @@
     
             })
 
+//functie voor de amount op de juiste plaats te zetten
 
+let addAmount = (json) =>{
+    let amount =  json.amount;
+    let currentAmount = document.querySelector(".wallet__amount");
+    currentAmount.innerHTML = amount
+}
 
-
-//transfers ophalen
-fetch('http://localhost:3000/api/v1/transfers', {
-    "headers": {
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-    }
-}).then(result => {
-    return result.json();
-}).then(json => {
-    // console.log(json);
-
+let addTransfer = (json) =>{
     let transfers = json.data.transfers;
     let userId = json.user;
 
@@ -124,6 +121,19 @@ fetch('http://localhost:3000/api/v1/transfers', {
 
 
     })
+}
+
+//transfers ophalen
+fetch('http://localhost:3000/api/v1/transfers', {
+    "headers": {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+}).then(result => {
+    return result.json();
+}).then(json => {
+    // console.log(json);
+    addTransfer(json);
+    
 
 }).catch(error => {
     
