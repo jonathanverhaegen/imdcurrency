@@ -1,4 +1,19 @@
+primus = Primus.connect("/", {
+    reconnect: {
+        max: Infinity // Number: The max delay before we try to reconnect.
+      , min: 500 // Number: The minimum delay before we try reconnect.
+      , retries: 10 // Number: How many times we should try to reconnect.
+    }
+  });
 
+primus.on('data', (data) => {
+    if(data.action === "add transfer"){
+        let amount = data.data.transfer.amount;
+        let wallet = parseInt(document.querySelector(".wallet__amount").innerHTML);
+        let newWallet = wallet + amount;
+        document.querySelector(".wallet__amount").innerHTML = newWallet;
+    }
+})
 
 
 //data van de user ophalen
@@ -10,7 +25,9 @@
                 return result.json();
             }).then(json => {
                     
-                    addAmount(json);
+                let amount =  json.amount;
+                let currentAmount = document.querySelector(".wallet__amount");
+                currentAmount.innerHTML = amount
                 
             }).catch(error => {
     
@@ -18,13 +35,9 @@
     
             })
 
-//functie voor de amount op de juiste plaats te zetten
 
-let addAmount = (json) =>{
-    let amount =  json.amount;
-    let currentAmount = document.querySelector(".wallet__amount");
-    currentAmount.innerHTML = amount
-}
+
+
 
 let addTransfer = (json) =>{
     let transfers = json.data.transfers;

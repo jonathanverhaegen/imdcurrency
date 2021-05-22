@@ -6,6 +6,8 @@ primus = Primus.connect("/", {
     }
   });
 
+  
+
 let sendBtn = document.querySelector('#sendCoins');
 
 sendBtn.addEventListener('click', (e) => {
