@@ -3,28 +3,28 @@
 @import '../spacing';
 
 .transactions{
-    margin-top:50px;
+    margin-top: $xl;
 }
 
 .transactions__title{
     text-align:center;
     font-family: $fontImdcoin;
-    margin-top: 75px;
+    margin-top: $xl;
     color: $jet;
     font-size:$plainText;
 }
 
 .transactions__list{
-    width:50%;
+    width:60%;
     margin-left:auto;
     margin-right:auto;
-    margin-top:50px;
+    margin-top: $med;
 }
 
 .transactions__item{
     display: grid;
     justify-content:center;
-    margin-bottom:20px;
+    margin-bottom: $med;
     grid-template-columns: 1fr 7fr 1fr;
 }
 

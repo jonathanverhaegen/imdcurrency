@@ -10,18 +10,15 @@
 </head>
 <body>
 
-    <h1 class="title" >Transactions</h1>
-
-    <div class="alert hidden">
-        Here is some feedback
-    </div>
-
+    
     <div class="container">
+
+        <h1 class="title" >Transfer</h1>
 
         <form class="transfer" action="">
 
             <label class="transfer__label" for="amount">Send coins</label>
-            <input type="number" class="transfer__input transfer__input--amount" id="amount" name="amount">
+            <input type="number" class="transfer__input transfer__input--number" id="amount" name="amount">
 
             <label class="transfer__label" for="receiver">Receiver email</label>
             <input type="text" class="transfer__input" id="receiver" name="receiver">
@@ -32,9 +29,9 @@
             <label class="transfer__label" for="message">Message</label>
             <input type="text" class="transfer__input" id="message" name="message">
 
-            <span class="transfer__btn">
-                <a class="btn" href="" id="sendCoins">send coins</a>
-            </span>
+            
+            <a class="btn" href="" id="sendCoins">send coins</a>
+           
             
 
         </form>
