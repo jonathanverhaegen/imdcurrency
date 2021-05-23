@@ -19,6 +19,8 @@
     margin-left:auto;
     margin-right:auto;
     margin-top: $med;
+    display:flex;
+    flex-direction: column-reverse;
 }
 
 .transactions__item{
