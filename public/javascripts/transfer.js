@@ -42,7 +42,7 @@ sendBtn.addEventListener('click', (e) => {
             });
 
             //terug sturen naar de wallet
-            // window.location.href = "index.html";
+            window.location.href = "index.html";
 
         }).catch(error => {
     
