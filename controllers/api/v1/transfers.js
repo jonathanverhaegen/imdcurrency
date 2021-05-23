@@ -38,7 +38,7 @@ const save = async (req,res) => {
     // Getting the id out of the object
     let receiverId = receiverUsername[0]._id;
 
-    console.log(receiverUsername[0].coins);
+    
     
     
     let amount = req.body.amount;
@@ -70,6 +70,8 @@ const save = async (req,res) => {
                 res.json({
                     "status": "succes",
                     "transfer": doc,
+                    "user": receiverId
+                    
                 })
             }
         })

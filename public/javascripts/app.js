@@ -8,35 +8,121 @@ primus = Primus.connect("/", {
 
 primus.on('data', (data) => {
     if(data.action === "add transfer"){
-        let amount = data.data.transfer.amount;
-        let wallet = parseInt(document.querySelector(".wallet__amount").innerHTML);
-        let newWallet = wallet + amount;
-        document.querySelector(".wallet__amount").innerHTML = newWallet;
+        updateWallet(data);
+        updateTransactions(data);
+        
     }
 })
 
-
 //data van de user ophalen
-    fetch('http://localhost:3000/api/v1/users', {
-        "headers": {
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-            }
-            }).then(result => {
-                return result.json();
-            }).then(json => {
-                    
-                let amount =  json.amount;
-                let currentAmount = document.querySelector(".wallet__amount");
-                currentAmount.innerHTML = amount
-                
-            }).catch(error => {
+fetch('http://localhost:3000/api/v1/users', {
+    "headers": {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+        }).then(result => {
+            return result.json();
+        }).then(json => {
+            
+            let userId = json.id; 
+            
+            let amount =  json.amount;
+            let currentAmount = document.querySelector(".wallet__amount");
+            currentAmount.innerHTML = amount
+            
+        }).catch(error => {
+
+            console.log(error)
+
+        })
+
+//fucntie die de amount in de wallet update
+let updateWallet = (data) => {
+
+    let amount = data.data.transfer.amount;
+    let wallet = parseInt(document.querySelector(".wallet__amount").innerHTML);
+    let newWallet = wallet + amount;
+    document.querySelector(".wallet__amount").innerHTML = newWallet;
+}
+
+let updateTransactions = (data) => {
+    console.log(data);
+    let transfer = data.data.transfer;
+    let userId = data.data.user;
+
+    let amount = transfer.amount;
+    let senderId = transfer.senderId;
+    let receiverId = transfer.receiverId;
+
+    let recentList = document.querySelector(".transactions__list");
+
+    if(receiverId === userId){
+        let recent = document.createElement('li');
+        let recentAmount = document.createElement('p');
+        let recentName = document.createElement('p');
+
+        recent.className = "transactions__item";
+        recentAmount.className = "transaction__item__amount";
+        recentName.className = "transaction__item__name";
+            
+        recentList.appendChild(recent);
+        recent.appendChild(recentName);
+        recent.append(recentAmount);
+
+        fetch('http://localhost:3000/api/v1/users/' + senderId, {
+                "headers": {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+                }).then(result => {
+                    return result.json();
+                }).then(json => {
+                    console.log(json);
+                   let firstName = json.user.firstname;
+                   recentName.innerHTML = firstName;
+                }).catch(error => {
     
-                console.log(error)
+                    console.log(error)
     
-            })
+                })
+
+        //amount invullen en inkleuren
+        recentAmount.innerHTML = amount;
+        
+    }
+}
 
 
 
+//transfers ophalen
+
+    
+    fetch('http://localhost:3000/api/v1/transfers', {
+    "headers": {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+}).then(result => {
+    return result.json();
+}).then(json => {
+    // console.log(json);
+    addTransfer(json);
+    
+
+}).catch(error => {
+    
+    console.log(error)
+    
+})
+
+
+
+
+
+let logout = document.querySelector("#logout");
+
+logout.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    window.location.href = "login.html";
+})
 
 
 let addTransfer = (json) =>{
@@ -135,32 +221,5 @@ let addTransfer = (json) =>{
 
     })
 }
-
-//transfers ophalen
-fetch('http://localhost:3000/api/v1/transfers', {
-    "headers": {
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-    }
-}).then(result => {
-    return result.json();
-}).then(json => {
-    // console.log(json);
-    addTransfer(json);
-    
-
-}).catch(error => {
-    
-    console.log(error)
-    
-})
-
-
-let logout = document.querySelector("#logout");
-
-logout.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.clear();
-    window.location.href = "login.html";
-})
 
 

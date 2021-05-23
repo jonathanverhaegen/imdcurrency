@@ -35,14 +35,14 @@ sendBtn.addEventListener('click', (e) => {
         }).then(result =>{
             return result.json();
         }).then(json => {
-            
+            console.log(json);
             primus.write({
                 "action": "add transfer",
                 "data": json
             });
 
             //terug sturen naar de wallet
-            window.location.href = "index.html";
+            // window.location.href = "index.html";
 
         }).catch(error => {
     
