@@ -10,37 +10,41 @@
 </head>
 <body>
 
-    <h1>yooo</h1>
+    <ul id="leaderboard">
 
-<footer>
+    </ul>
 
-    <div class="menu">
+    <footer>
 
-        <a class="menu__link" href="index.html">
-            <img class="menu__img" src="images/wallet.svg" alt="wallet">
-            <p>Wallet</p>
-        </a>
-
-        <a class="menu__link" href="transfers.html">
-            <img class="menu__img" src="images/trans.svg" alt="transaction">
-            <p>Transactions</p>
-        </a>
-
-        <a class="menu__link" href="leaderboard.html">
-            <img class="menu__img" src="images/trophy-click.svg" alt="leaderboard">
-            <p>Leaderboard</p>
-        </a>
-
-        <a class="menu__link" href="">
-            <img class="menu__img" src="images/logout.svg" alt="logout">
-            <p>Logout</p>
-        </a>
-
-    </div>
-
+        <div class="menu">
     
-</footer>
+            <a class="menu__link" href="index.html">
+                <img class="menu__img" src="images/wallet.svg" alt="wallet">
+                <p>Wallet</p>
+            </a>
+    
+            <a class="menu__link" href="transfers.html">
+                <img class="menu__img" src="images/trans-click.svg" alt="transaction">
+                <p>Transactions</p>
+            </a>
+    
+            <a class="menu__link" href="leaderboard.html">
+                <img class="menu__img" src="images/trophy.svg" alt="leaderboard">
+                <p>Leaderboard</p>
+            </a>
+    
+            <a class="menu__link" href="">
+                <img class="menu__img" src="images/logout.svg" alt="logout" id="logout">
+                <p>Logout</p>
+            </a>
+    
+        </div>
+    
+        
+    </footer>
 
+<script src="/primus/primus.js"></script>
 <script src="javascripts/app.js"></script>
+<script src="javascripts/leaderboard.js"></script>
 </body>
 </html>
