@@ -39,11 +39,9 @@ primus.on('data', (data) => {
         let receiverId = data.data.transfer.receiverId;
         let senderId = data.data.transfer.senderId;
 
-        console.log(userId);
-        console.log(receiverId);
-        console.log(senderId);
 
         updateWallet(data, userId, receiverId, senderId);
+        updateTransfers(data, userId, receiverId, senderId);
         
     }
 })
@@ -70,18 +68,16 @@ let updateWallet = (data, userId, receiverId, senderId) => {
     
 }
 
-let updateTransactions = (data) => {
-    
-    let transfer = data.data.transfer;
-    let userId = data.data.user;
+let updateTransfers = (data, userId, receiverId, senderId) =>{
 
-    let amount = transfer.amount;
-    let senderId = transfer.senderId;
-    let receiverId = transfer.receiverId;
+    if(userId === receiverId){
 
-    let recentList = document.querySelector(".transactions__list");
+        let transfer = data.data.transfer;
+        let amount = transfer.amount;
+        console.log(transfer);
 
-    if(receiverId === userId){
+        let recentList = document.querySelector(".transactions__list");
+
         let recent = document.createElement('li');
         let recentAmount = document.createElement('p');
         let recentName = document.createElement('p');
@@ -89,32 +85,43 @@ let updateTransactions = (data) => {
         recent.className = "transactions__item";
         recentAmount.className = "transaction__item__amount";
         recentName.className = "transaction__item__name";
-            
+
         recentList.appendChild(recent);
         recent.appendChild(recentName);
         recent.append(recentAmount);
 
-        fetch('http://localhost:3000/api/v1/users/' + senderId, {
-                "headers": {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
-                }
-                }).then(result => {
-                    return result.json();
-                }).then(json => {
-                    console.log(json);
-                   let firstName = json.user.firstname;
-                   recentName.innerHTML = firstName;
-                }).catch(error => {
-    
-                    console.log(error)
-    
-                })
+        //naam van de sender gaan opzoeken en invullen
 
-        //amount invullen en inkleuren
-        recentAmount.innerHTML = amount;
+        fetch('http://localhost:3000/api/v1/users/' + senderId, {
+            "headers": {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+        }).then(result => {
+                return result.json();
+        }).then(json => {
+            
+            let firstName = json.user.firstname;
+            recentName.innerHTML = firstName;
+            recentAmount.innerHTML = amount;
+        }).catch(error => {
+    
+            console.log(error)
+    
+        })
+
         
+        
+
+
     }
+
+    if(userId === senderId){
+        console.log("geld verzonden");
+    }
+
 }
+
+
 
 
 
