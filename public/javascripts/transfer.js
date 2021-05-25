@@ -1,3 +1,11 @@
+//redirecten als een user niet is ingelogd
+
+if(localStorage.getItem('token') === null){
+    window.location.href = "login.html";    
+}
+
+const url = "http://localhost:3000";
+
 primus = Primus.connect("/", {
     reconnect: {
         max: Infinity // Number: The max delay before we try to reconnect.
@@ -14,20 +22,24 @@ sendBtn.addEventListener('click', (e) => {
     e.preventDefault();
     
     let amount = parseInt(document.querySelector("#amount").value);
-    let receiver = document.querySelector("#receiver").value
+    // let receiver = document.querySelector("#receiver").value
+    let firstname = document.querySelector("#firstname").value;
+    let lastname = document.querySelector("#lastname").value
     let reason =  document.querySelector("#reason").value;
     let message =  document.querySelector("#message").value;
 
     if(amount > 0){
         
-        fetch('http://localhost:3000/api/v1/transfers', {
+        fetch(url + "/api/v1/transfers", {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem('token')
         },
         body: JSON.stringify({
-            "receiverMail": receiver,
+            // "receiverMail": receiver,
+            "firstname": firstname,
+            "lastname": lastname,
             "amount": amount,
             "reason": reason,
             "text": message
@@ -35,14 +47,31 @@ sendBtn.addEventListener('click', (e) => {
         }).then(result =>{
             return result.json();
         }).then(json => {
-            console.log(json);
-            primus.write({
-                "action": "add transfer",
-                "data": json
-            });
+            
+            if(json.status === "success"){
 
-            //terug sturen naar de wallet
-            window.location.href = "index.html";
+                primus.write({
+                    "action": "add transfer",
+                    "data": json
+                });
+
+                //terug sturen naar de wallet
+                window.location.href = "index.html";
+
+            }
+
+            if(json.status === "error"){
+                
+                let error = json.message
+                let feedback = document.querySelector(".transfer__alert");
+                feedback.textContent = error;
+                feedback.classList.remove("hidden");
+
+            }
+
+            
+
+            
 
         }).catch(error => {
     
@@ -52,9 +81,10 @@ sendBtn.addEventListener('click', (e) => {
 
 
     }else{
-        let feedback = document.querySelector(".alert");
-                feedback.textContent = "Please enter a valid number that is higher than 0";
-                feedback.classList.remove("hidden");
+        
+        let feedback = document.querySelector(".transfer__alert");
+        feedback.textContent = "Please enter a valid number that is higher than 0";
+        feedback.classList.remove("hidden");
     }
 
     

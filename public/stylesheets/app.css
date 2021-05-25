@@ -60,11 +60,10 @@
 
 footer {
   background-color: #3c6e71;
-  margin-top: 100px;
-  bottom: 0;
   position: fixed;
-  width: 100%;
-  left: 0; }
+  bottom: 0;
+  left: 0;
+  width: 100%; }
 
 .menu {
   display: flex;
@@ -102,6 +101,7 @@ footer {
 .transfer__input {
   border: none;
   font-size: 20px;
+  font-family: "Comfortaa", cursive;
   color: #353535;
   border-radius: 10px;
   width: 60%;
@@ -111,6 +111,22 @@ footer {
 
 .transfer__input--number {
   width: 30%; }
+
+.transfer__option {
+  font-size: "Comfortaa", cursive;
+  color: #353535;
+  font-size: 20px; }
+
+.transfer__alert {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 35px;
+  font-size: 20px;
+  font-family: "Comfortaa", cursive;
+  color: #C83E4D; }
+
+.hidden {
+  display: none; }
 
 .wallet {
   display: flex;
@@ -147,7 +163,8 @@ footer {
   margin-right: auto;
   margin-top: 20px;
   display: flex;
-  flex-direction: column-reverse; }
+  flex-direction: column-reverse;
+  padding-bottom: 100px; }
 
 .transactions__item {
   display: grid;
@@ -170,13 +187,15 @@ footer {
   box-sizing: border-box; }
 
 body {
-  background-color: #F5F5F5; }
+  background-color: #F5F5F5;
+  min-height: 100%; }
 
 .container {
   margin-top: 50px;
   width: 80%;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  padding-bottom: 50px; }
 
 .title {
   text-align: center;

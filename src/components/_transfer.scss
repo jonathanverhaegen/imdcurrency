@@ -21,6 +21,7 @@
 .transfer__input{
     border:none;
     font-size: $plainText;
+    font-family: $fontImdcoin;
     color: $jet;
     border-radius: $small;
     width:60%;
@@ -31,6 +32,25 @@
 
 .transfer__input--number{
     width:30%;
+}
+
+.transfer__option{
+    font-size: $fontImdcoin;
+    color: $jet;
+    font-size: $plainText;
+}
+
+.transfer__alert{
+    text-align:center;
+    margin-top: $small;
+    margin-bottom: $lg;
+    font-size: $plainText;
+    font-family: $fontImdcoin;
+    color: $brick;
+}
+
+.hidden{
+    display:none;
 }
 
 

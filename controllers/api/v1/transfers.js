@@ -7,7 +7,7 @@ const getAll = (req,res) => {
     // Getting the userId
     let userId = req.user._id;
     
-    Transfer.find({$or:[{"senderId": userId},{"receiverId":userId}]}, {useFindAndModify: false}, (err, docs) => {
+    Transfer.find({$or:[{"senderId": userId},{"receiverId":userId}]}, {useFindAndModify: false}, {count:1, results:{ $slice: 5}}, (err, docs) => {
         if(err){
             res.json({
                 "status": "error",
@@ -31,7 +31,8 @@ const getAll = (req,res) => {
 
 const save = async (req,res) => {
     // Getting receiverId by mail
-    let receiverUsername = await User.find({username: req.body.receiverMail});
+    // let receiverUsername = await User.find({username: req.body.receiverMail});
+    let receiverUsername = await User.find({firstname: req.body.firstname, lastname: req.body.lastname});
     // Getting id of logged in user
     let senderId = req.user._id;
     
@@ -68,7 +69,7 @@ const save = async (req,res) => {
 
             if(!err){
                 res.json({
-                    "status": "succes",
+                    "status": "success",
                     "transfer": doc,
                     "user": receiverId
                     
@@ -78,7 +79,7 @@ const save = async (req,res) => {
     }else{
         res.json({
             "status": "error",
-            "message": "not enough coins"
+            "message": "Not enough coins"
         })
     }
     
@@ -143,14 +144,24 @@ const filterAmount = (req,res) => {
         if(!err){
             res.json({
                 "status": "success",
-                "transfer": docs
+                "transfers": docs
             })
         }
     });
 };
+
+const history = (req, res) => {
+    Transfer.find((err, docs) => {
+        res.json({
+            'status': 'success',
+            'transfers': docs
+        })
+    })
+}
 
 module.exports.getAll = getAll;
 module.exports.save = save;
 module.exports.getById = getById;
 module.exports.leaderboard = leaderboard;
 module.exports.filterAmount = filterAmount;
+module.exports.history = history;

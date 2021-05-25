@@ -1,9 +1,9 @@
-let Primus = require('primus');
+const Primus = require('primus');
 
 let go = (server) => {
-    primus = new Primus(server, {/* options */});
+    let primus = new Primus(server, {/* options */});
 
-    primus.on('connection', function (spark) {
+    primus.on('connection', (spark) => {
         // spark is the new connection.
         console.log("we have a spark");
 

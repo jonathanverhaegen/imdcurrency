@@ -1,3 +1,38 @@
+//redirecten als een user niet is ingelogd
+
+if(localStorage.getItem('token') === null){
+    window.location.href = "login.html";    
+}
+
+const url = "http://localhost:3000";
+
+
+
+fetch(url + '/api/v1/users', {
+    "headers": {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+        }).then(result => {
+            return result.json();
+        }).then(json => {
+            
+            let userId = json.id;
+            localStorage.setItem('id', userId);
+            
+            
+            let amount =  json.amount;
+            let currentAmount = document.querySelector(".wallet__amount");
+            currentAmount.innerHTML = amount;
+            
+        }).catch(error => {
+
+            console.log(error)
+
+        })
+
+
+
+
 primus = Primus.connect("/", {
     reconnect: {
         max: Infinity // Number: The max delay before we try to reconnect.
@@ -8,54 +43,48 @@ primus = Primus.connect("/", {
 
 primus.on('data', (data) => {
     if(data.action === "add transfer"){
-        updateWallet(data);
-        updateTransactions(data);
+
+        let userId = localStorage.getItem('id');
+        let receiverId = data.data.transfer.receiverId;
+        let senderId = data.data.transfer.senderId;
+
+        updateWallet(data, userId, receiverId, senderId);
+        updateTransfers(data, userId, receiverId, senderId);
         
     }
 })
 
-//data van de user ophalen
-fetch('http://localhost:3000/api/v1/users', {
-    "headers": {
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }
-        }).then(result => {
-            return result.json();
-        }).then(json => {
-            
-            let userId = json.id; 
-            
-            let amount =  json.amount;
-            let currentAmount = document.querySelector(".wallet__amount");
-            currentAmount.innerHTML = amount
-            
-        }).catch(error => {
 
-            console.log(error)
-
-        })
 
 //fucntie die de amount in de wallet update
-let updateWallet = (data) => {
+const updateWallet = (data, userId, receiverId, senderId) => {
 
-    let amount = data.data.transfer.amount;
-    let wallet = parseInt(document.querySelector(".wallet__amount").innerHTML);
-    let newWallet = wallet + amount;
-    document.querySelector(".wallet__amount").innerHTML = newWallet;
+    if(userId === receiverId){
+        let amount = data.data.transfer.amount;
+        let wallet = parseInt(document.querySelector(".wallet__amount").innerHTML);
+        let newWallet = wallet + amount;
+        document.querySelector(".wallet__amount").innerHTML = newWallet;
+    }
+
+    if(userId === senderId){
+        let amount = data.data.transfer.amount;
+        let wallet = parseInt(document.querySelector(".wallet__amount").innerHTML);
+        let newWallet = wallet - amount;
+        document.querySelector(".wallet__amount").innerHTML = newWallet;
+    }
+
+    
 }
 
-let updateTransactions = (data) => {
-    console.log(data);
-    let transfer = data.data.transfer;
-    let userId = data.data.user;
+const updateTransfers = (data, userId, receiverId, senderId) =>{
 
-    let amount = transfer.amount;
-    let senderId = transfer.senderId;
-    let receiverId = transfer.receiverId;
+    if(userId === receiverId){
 
-    let recentList = document.querySelector(".transactions__list");
+        let transfer = data.data.transfer;
+        let amount = transfer.amount;
 
-    if(receiverId === userId){
+        let recentList = document.querySelector(".transactions__list");
+
         let recent = document.createElement('li');
         let recentAmount = document.createElement('p');
         let recentName = document.createElement('p');
@@ -63,39 +92,85 @@ let updateTransactions = (data) => {
         recent.className = "transactions__item";
         recentAmount.className = "transaction__item__amount";
         recentName.className = "transaction__item__name";
-            
+
         recentList.appendChild(recent);
         recent.appendChild(recentName);
         recent.append(recentAmount);
 
-        fetch('http://localhost:3000/api/v1/users/' + senderId, {
-                "headers": {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
-                }
-                }).then(result => {
-                    return result.json();
-                }).then(json => {
-                    console.log(json);
-                   let firstName = json.user.firstname;
-                   recentName.innerHTML = firstName;
-                }).catch(error => {
-    
-                    console.log(error)
-    
-                })
+        //naam van de sender gaan opzoeken en invullen
 
-        //amount invullen en inkleuren
-        recentAmount.innerHTML = amount;
+        fetch(url +'/api/v1/users/' + senderId, {
+            "headers": {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+        }).then(result => {
+                return result.json();
+        }).then(json => {
+            
+            let firstName = json.user.firstname;
+            recentName.innerHTML = firstName;
+            recentAmount.innerHTML = amount;
+        }).catch(error => {
+    
+            console.log(error)
+    
+        })
+
         
+        
+
+
     }
+
+    if(userId === senderId){
+        let transfer = data.data.transfer;
+        let amount = transfer.amount;
+
+        let recentList = document.querySelector(".transactions__list");
+
+        let recent = document.createElement('li');
+        let recentAmount = document.createElement('p');
+        let recentName = document.createElement('p');
+
+        recent.className = "transactions__item";
+        recentAmount.className = "transaction__item__amount";
+        recentName.className = "transaction__item__name";
+
+        recentList.appendChild(recent);
+        recent.appendChild(recentName);
+        recent.append(recentAmount);
+
+        //naam van de receiver gaan opzoeken en invullen
+
+        fetch(url + '/api/v1/users/' + receiverId, {
+            "headers": {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+        }).then(result => {
+                return result.json();
+        }).then(json => {
+            
+            let firstName = json.user.firstname;
+            recentName.innerHTML = firstName;
+            recentAmount.innerHTML = "-" + amount;
+            recentAmount.style.color = "#C83E4D"
+        }).catch(error => {
+    
+            console.log(error)
+    
+        })
+    }
+
 }
+
+
 
 
 
 //transfers ophalen
 
     
-    fetch('http://localhost:3000/api/v1/transfers', {
+    fetch(url + '/api/v1/transfers', {
     "headers": {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
@@ -114,18 +189,7 @@ let updateTransactions = (data) => {
 
 
 
-
-
-let logout = document.querySelector("#logout");
-
-logout.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.clear();
-    window.location.href = "login.html";
-})
-
-
-let addTransfer = (json) =>{
+const addTransfer = (json) =>{
     let transfers = json.data.transfers;
     let userId = json.user;
 
@@ -155,7 +219,7 @@ let addTransfer = (json) =>{
 
             //naam van de reciever gaan halen en invullen
             
-                fetch('http://localhost:3000/api/v1/users/' + receiverId, {
+                fetch(url + '/api/v1/users/' + receiverId, {
                 "headers": {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }
@@ -195,7 +259,7 @@ let addTransfer = (json) =>{
 
             //naam van de reciever gaan halen en invullen
             
-                fetch('http://localhost:3000/api/v1/users/' + senderId, {
+                fetch(url + '/api/v1/users/' + senderId, {
                 "headers": {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }
@@ -221,5 +285,13 @@ let addTransfer = (json) =>{
 
     })
 }
+
+let logout = document.querySelector("#logout");
+
+logout.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    window.location.href = "login.html";
+})
 
 

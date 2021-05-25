@@ -5,6 +5,7 @@
 @import 'components/wallet';
 @import 'components/transactions';
 @import './colors';
+@import './spacing';
 
 *{
     box-sizing: border-box;
@@ -13,13 +14,15 @@
 
 body{
     background-color: $cultured;
+    min-height: 100%;
 }
 
 .container{
-    margin-top:50px;
+    margin-top: $xl;
     width: 80%;
     margin-left:auto;
     margin-right:auto;
+    padding-bottom: $xl;
 }
 
 .title{

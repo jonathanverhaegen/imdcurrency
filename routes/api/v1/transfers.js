@@ -14,6 +14,10 @@ router.post('/',  transfersController.save);
 
 router.get('/filter', transfersController.filterAmount);
 
+//GET api/v1/transfers/filter
+
+router.get('/history', transfersController.history);
+
 // GET api/v1/transfers/:id
 router.get('/:id', transfersController.getById);
 
