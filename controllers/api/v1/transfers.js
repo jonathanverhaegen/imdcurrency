@@ -31,7 +31,8 @@ const getAll = (req,res) => {
 
 const save = async (req,res) => {
     // Getting receiverId by mail
-    let receiverUsername = await User.find({username: req.body.receiverMail});
+    // let receiverUsername = await User.find({username: req.body.receiverMail});
+    let receiverUsername = await User.find({firstname: req.body.firstname, lastname: req.body.lastname});
     // Getting id of logged in user
     let senderId = req.user._id;
     
@@ -68,7 +69,7 @@ const save = async (req,res) => {
 
             if(!err){
                 res.json({
-                    "status": "succes",
+                    "status": "success",
                     "transfer": doc,
                     "user": receiverId
                     

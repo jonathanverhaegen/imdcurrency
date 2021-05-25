@@ -1,5 +1,14 @@
+//redirecten als een user niet is ingelogd
 
-fetch('http://localhost:3000/api/v1/users', {
+if(localStorage.getItem('token') === null){
+    window.location.href = "login.html";    
+}
+
+const url = "http://localhost:3000";
+
+
+
+fetch(url + '/api/v1/users', {
     "headers": {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
@@ -39,7 +48,6 @@ primus.on('data', (data) => {
         let receiverId = data.data.transfer.receiverId;
         let senderId = data.data.transfer.senderId;
 
-
         updateWallet(data, userId, receiverId, senderId);
         updateTransfers(data, userId, receiverId, senderId);
         
@@ -49,7 +57,7 @@ primus.on('data', (data) => {
 
 
 //fucntie die de amount in de wallet update
-let updateWallet = (data, userId, receiverId, senderId) => {
+const updateWallet = (data, userId, receiverId, senderId) => {
 
     if(userId === receiverId){
         let amount = data.data.transfer.amount;
@@ -68,7 +76,7 @@ let updateWallet = (data, userId, receiverId, senderId) => {
     
 }
 
-let updateTransfers = (data, userId, receiverId, senderId) =>{
+const updateTransfers = (data, userId, receiverId, senderId) =>{
 
     if(userId === receiverId){
 
@@ -91,7 +99,7 @@ let updateTransfers = (data, userId, receiverId, senderId) =>{
 
         //naam van de sender gaan opzoeken en invullen
 
-        fetch('http://localhost:3000/api/v1/users/' + senderId, {
+        fetch(url +'/api/v1/users/' + senderId, {
             "headers": {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
@@ -134,7 +142,7 @@ let updateTransfers = (data, userId, receiverId, senderId) =>{
 
         //naam van de receiver gaan opzoeken en invullen
 
-        fetch('http://localhost:3000/api/v1/users/' + receiverId, {
+        fetch(url + '/api/v1/users/' + receiverId, {
             "headers": {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
@@ -162,7 +170,7 @@ let updateTransfers = (data, userId, receiverId, senderId) =>{
 //transfers ophalen
 
     
-    fetch('http://localhost:3000/api/v1/transfers', {
+    fetch(url + '/api/v1/transfers', {
     "headers": {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
@@ -181,18 +189,7 @@ let updateTransfers = (data, userId, receiverId, senderId) =>{
 
 
 
-
-
-// let logout = document.querySelector("#logout");
-
-// logout.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     localStorage.clear();
-//     window.location.href = "login.html";
-// })
-
-
-let addTransfer = (json) =>{
+const addTransfer = (json) =>{
     let transfers = json.data.transfers;
     let userId = json.user;
 
@@ -222,7 +219,7 @@ let addTransfer = (json) =>{
 
             //naam van de reciever gaan halen en invullen
             
-                fetch('http://localhost:3000/api/v1/users/' + receiverId, {
+                fetch(url + '/api/v1/users/' + receiverId, {
                 "headers": {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }
@@ -262,7 +259,7 @@ let addTransfer = (json) =>{
 
             //naam van de reciever gaan halen en invullen
             
-                fetch('http://localhost:3000/api/v1/users/' + senderId, {
+                fetch(url + '/api/v1/users/' + senderId, {
                 "headers": {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }
@@ -288,5 +285,13 @@ let addTransfer = (json) =>{
 
     })
 }
+
+let logout = document.querySelector("#logout");
+
+logout.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    window.location.href = "login.html";
+})
 
 

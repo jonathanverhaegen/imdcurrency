@@ -22,11 +22,23 @@
             <label class="transfer__label" for="amount">Send coins</label>
             <input type="number" class="transfer__input transfer__input--number" id="amount" name="amount">
 
-            <label class="transfer__label" for="receiver">Receiver email</label>
-            <input type="text" class="transfer__input" id="receiver" name="receiver">
+            <!-- <label class="transfer__label" for="receiver">Receiver email</label>
+            <input type="text" class="transfer__input" id="receiver" name="receiver"> -->
+
+            <label class="transfer__label" for="firstname">Receiver firstname</label>
+            <input type="text" class="transfer__input" id="firstname" name="firstname">
+
+            <label class="transfer__label" for="lastname">Receiver lastname</label>
+            <input type="text" class="transfer__input" id="lastname" name="lastname">
 
             <label class="transfer__label" for="reason">Reason</label>
-            <input type="text" class="transfer__input" id="reason" name="reason">
+            <select class="transfer__input" id="reason" name="reason">
+                <option class="transfer__option" value="Development help">Development help</option>
+                <option value="Design help">Design help</option>
+                <option value="Feedback">Feedback</option>
+                <option value="Meeting deadlines">Meeting deadlines</option>
+                <option value="Other">Other</option>
+            </select>
             
             <label class="transfer__label" for="message">Message</label>
             <input type="text" class="transfer__input" id="message" name="message">

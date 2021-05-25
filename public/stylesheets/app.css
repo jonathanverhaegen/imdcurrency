@@ -101,6 +101,7 @@ footer {
 .transfer__input {
   border: none;
   font-size: 20px;
+  font-family: "Comfortaa", cursive;
   color: #353535;
   border-radius: 10px;
   width: 60%;
@@ -110,6 +111,11 @@ footer {
 
 .transfer__input--number {
   width: 30%; }
+
+.transfer__option {
+  font-size: "Comfortaa", cursive;
+  color: #353535;
+  font-size: 20px; }
 
 .transfer__alert {
   text-align: center;
