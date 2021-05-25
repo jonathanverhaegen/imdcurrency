@@ -74,7 +74,6 @@ let updateTransfers = (data, userId, receiverId, senderId) =>{
 
         let transfer = data.data.transfer;
         let amount = transfer.amount;
-        console.log(transfer);
 
         let recentList = document.querySelector(".transactions__list");
 
@@ -116,7 +115,42 @@ let updateTransfers = (data, userId, receiverId, senderId) =>{
     }
 
     if(userId === senderId){
-        console.log("geld verzonden");
+        let transfer = data.data.transfer;
+        let amount = transfer.amount;
+
+        let recentList = document.querySelector(".transactions__list");
+
+        let recent = document.createElement('li');
+        let recentAmount = document.createElement('p');
+        let recentName = document.createElement('p');
+
+        recent.className = "transactions__item";
+        recentAmount.className = "transaction__item__amount";
+        recentName.className = "transaction__item__name";
+
+        recentList.appendChild(recent);
+        recent.appendChild(recentName);
+        recent.append(recentAmount);
+
+        //naam van de receiver gaan opzoeken en invullen
+
+        fetch('http://localhost:3000/api/v1/users/' + receiverId, {
+            "headers": {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+        }).then(result => {
+                return result.json();
+        }).then(json => {
+            
+            let firstName = json.user.firstname;
+            recentName.innerHTML = firstName;
+            recentAmount.innerHTML = "-" + amount;
+            recentAmount.style.color = "#C83E4D"
+        }).catch(error => {
+    
+            console.log(error)
+    
+        })
     }
 
 }
