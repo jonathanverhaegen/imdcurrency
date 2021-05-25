@@ -78,7 +78,7 @@ const save = async (req,res) => {
     }else{
         res.json({
             "status": "error",
-            "message": "not enough coins"
+            "message": "Not enough coins"
         })
     }
     
@@ -143,14 +143,24 @@ const filterAmount = (req,res) => {
         if(!err){
             res.json({
                 "status": "success",
-                "transfer": docs
+                "transfers": docs
             })
         }
     });
 };
+
+const history = (req, res) => {
+    Transfer.find((err, docs) => {
+        res.json({
+            'status': 'success',
+            'transfers': docs
+        })
+    })
+}
 
 module.exports.getAll = getAll;
 module.exports.save = save;
 module.exports.getById = getById;
 module.exports.leaderboard = leaderboard;
 module.exports.filterAmount = filterAmount;
+module.exports.history = history;

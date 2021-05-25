@@ -36,13 +36,30 @@ sendBtn.addEventListener('click', (e) => {
             return result.json();
         }).then(json => {
             
-            primus.write({
-                "action": "add transfer",
-                "data": json
-            });
+            if(json.status === "success"){
 
-            //terug sturen naar de wallet
-            window.location.href = "index.html";
+                primus.write({
+                    "action": "add transfer",
+                    "data": json
+                });
+
+                //terug sturen naar de wallet
+                window.location.href = "index.html";
+
+            }
+
+            if(json.status === "error"){
+                
+                let error = json.message
+                let feedback = document.querySelector(".transfer__alert");
+                feedback.textContent = error;
+                feedback.classList.remove("hidden");
+
+            }
+
+            
+
+            
 
         }).catch(error => {
     
