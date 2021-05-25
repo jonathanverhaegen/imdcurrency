@@ -33,5 +33,18 @@
     width:30%;
 }
 
+.transfer__alert{
+    text-align:center;
+    margin-top: $small;
+    margin-bottom: $lg;
+    font-size: $plainText;
+    font-family: $fontImdcoin;
+    color: $brick;
+}
+
+.hidden{
+    display:none;
+}
+
 
 

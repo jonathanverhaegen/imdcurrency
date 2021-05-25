@@ -1,3 +1,29 @@
+
+fetch('http://localhost:3000/api/v1/users', {
+    "headers": {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+        }).then(result => {
+            return result.json();
+        }).then(json => {
+            
+            let userId = json.id;
+            localStorage.setItem('id', userId);
+            
+            
+            let amount =  json.amount;
+            let currentAmount = document.querySelector(".wallet__amount");
+            currentAmount.innerHTML = amount;
+            
+        }).catch(error => {
+
+            console.log(error)
+
+        })
+
+
+
+
 primus = Primus.connect("/", {
     reconnect: {
         max: Infinity // Number: The max delay before we try to reconnect.
@@ -8,44 +34,44 @@ primus = Primus.connect("/", {
 
 primus.on('data', (data) => {
     if(data.action === "add transfer"){
-        updateWallet(data);
-        updateTransactions(data);
+
+        let userId = localStorage.getItem('id');
+        let receiverId = data.data.transfer.receiverId;
+        let senderId = data.data.transfer.senderId;
+
+        console.log(userId);
+        console.log(receiverId);
+        console.log(senderId);
+
+        updateWallet(data, userId, receiverId, senderId);
         
     }
 })
 
-//data van de user ophalen
-fetch('http://localhost:3000/api/v1/users', {
-    "headers": {
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }
-        }).then(result => {
-            return result.json();
-        }).then(json => {
-            
-            let userId = json.id; 
-            
-            let amount =  json.amount;
-            let currentAmount = document.querySelector(".wallet__amount");
-            currentAmount.innerHTML = amount
-            
-        }).catch(error => {
 
-            console.log(error)
-
-        })
 
 //fucntie die de amount in de wallet update
-let updateWallet = (data) => {
+let updateWallet = (data, userId, receiverId, senderId) => {
 
-    let amount = data.data.transfer.amount;
-    let wallet = parseInt(document.querySelector(".wallet__amount").innerHTML);
-    let newWallet = wallet + amount;
-    document.querySelector(".wallet__amount").innerHTML = newWallet;
+    if(userId === receiverId){
+        let amount = data.data.transfer.amount;
+        let wallet = parseInt(document.querySelector(".wallet__amount").innerHTML);
+        let newWallet = wallet + amount;
+        document.querySelector(".wallet__amount").innerHTML = newWallet;
+    }
+
+    if(userId === senderId){
+        let amount = data.data.transfer.amount;
+        let wallet = parseInt(document.querySelector(".wallet__amount").innerHTML);
+        let newWallet = wallet - amount;
+        document.querySelector(".wallet__amount").innerHTML = newWallet;
+    }
+
+    
 }
 
 let updateTransactions = (data) => {
-    console.log(data);
+    
     let transfer = data.data.transfer;
     let userId = data.data.user;
 
@@ -116,13 +142,13 @@ let updateTransactions = (data) => {
 
 
 
-let logout = document.querySelector("#logout");
+// let logout = document.querySelector("#logout");
 
-logout.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.clear();
-    window.location.href = "login.html";
-})
+// logout.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     localStorage.clear();
+//     window.location.href = "login.html";
+// })
 
 
 let addTransfer = (json) =>{

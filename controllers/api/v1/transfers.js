@@ -7,7 +7,7 @@ const getAll = (req,res) => {
     // Getting the userId
     let userId = req.user._id;
     
-    Transfer.find({$or:[{"senderId": userId},{"receiverId":userId}]}, {useFindAndModify: false}, (err, docs) => {
+    Transfer.find({$or:[{"senderId": userId},{"receiverId":userId}]}, {useFindAndModify: false}, {count:1, results:{ $slice: 5}}, (err, docs) => {
         if(err){
             res.json({
                 "status": "error",

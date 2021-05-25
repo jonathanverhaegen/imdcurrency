@@ -35,7 +35,7 @@ sendBtn.addEventListener('click', (e) => {
         }).then(result =>{
             return result.json();
         }).then(json => {
-            console.log(json);
+            
             primus.write({
                 "action": "add transfer",
                 "data": json
@@ -52,9 +52,10 @@ sendBtn.addEventListener('click', (e) => {
 
 
     }else{
-        let feedback = document.querySelector(".alert");
-                feedback.textContent = "Please enter a valid number that is higher than 0";
-                feedback.classList.remove("hidden");
+        
+        let feedback = document.querySelector(".transfer__alert");
+        feedback.textContent = "Please enter a valid number that is higher than 0";
+        feedback.classList.remove("hidden");
     }
 
     
