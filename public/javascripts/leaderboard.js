@@ -15,9 +15,11 @@ primus = Primus.connect(url, {
   })
 
   let addToLeaderboard = (json) => {
+      $position = 1;
       json.transfer.forEach((e) => {
-          var record = `<li class="">${e.firstname} ${e.lastname} <span>${e.coins} coins</span></li>`;
+          var record = `<li class=""><span>${$position}</span> ${e.firstname} ${e.lastname} <span>${e.coins} coins</span></li>`;
           document.querySelector("#leaderboard").insertAdjacentHTML('beforeend', record);
+          $position++;
       })
   }
 
