@@ -10,7 +10,7 @@ const signup = async (req,res,next) => {
     let lastname = req.body.lastname;
     let username = req.body.username;
     let password = req.body.password;
-    let coins = 50;
+    let coins = 100;
 
     let endEmail = username.split("@");
 
