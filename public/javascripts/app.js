@@ -8,7 +8,7 @@ const url = "http://localhost:3000";
 
 
 
-fetch(url + '/api/v1/users', {
+fetch(url + '/api/v1/users/user', {
     "headers": {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
@@ -63,6 +63,9 @@ const updateWallet = (data, userId, receiverId, senderId) => {
         let amount = data.data.transfer.amount;
         let wallet = parseInt(document.querySelector(".wallet__amount").innerHTML);
         let newWallet = wallet + amount;
+        if(newWallet > 999){
+            newWallet = 999;
+        }
         document.querySelector(".wallet__amount").innerHTML = newWallet;
     }
 

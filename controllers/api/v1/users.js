@@ -49,5 +49,42 @@ const getUserById =  (req, res) =>{
     
 }
 
+const getAll = (req, res) => {
+    User.find((err, docs) => {
+        if(err){
+            res.json({
+                "status": "error",
+                "message": err
+            })
+        }
+        if(!err){
+            res.json({
+                "status": "success",
+                "user": docs
+            })
+        }
+    })
+}
+
+const getUserByFirstname = (req, res) => {
+    let firstname = req.params.firstname;
+    User.find({firstname: firstname}, (err, docs)=>{
+        if(err){
+            res.json({
+                "status": "error",
+                "message": err
+            })
+        }
+        if(!err){
+            res.json({
+                "status": "success",
+                "user": docs
+            })
+        }
+    })
+}
+
 module.exports.getUser = getUser;
 module.exports.getUserById = getUserById;
+module.exports.getAll = getAll;
+module.exports.getUserByFirstname = getUserByFirstname;

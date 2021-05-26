@@ -15,33 +15,32 @@
 
         <h1 class="title" >Transfer</h1>
 
-        <form class="transfer" action="">
+        <form class="form" action="">
 
-            <p class="transfer__alert hidden"></p>
+            <p class="form__alert hidden"></p>
 
-            <label class="transfer__label" for="amount">Send coins</label>
-            <input type="number" class="transfer__input transfer__input--number" id="amount" name="amount">
+            <label class="form__label form__label--small" for="amount">Send coins</label>
+            <input type="number" class="form__input form__input--small form__input--number" id="amount" name="amount"> 
 
-            <!-- <label class="transfer__label" for="receiver">Receiver email</label>
-            <input type="text" class="transfer__input" id="receiver" name="receiver"> -->
+            <label class="form__label form__label--small" for="firstname">Receiver firstname</label>
+            <input list="listFirstname" type="text" class="form__input form__input--small" id="firstname" name="firstname">
+            <datalist type="text" class="form__input form__input--small" id="listFirstname" ></datalist>  
 
-            <label class="transfer__label" for="firstname">Receiver firstname</label>
-            <input type="text" class="transfer__input" id="firstname" name="firstname">
+            <label class="form__label form__label--small" for="lastname">Receiver lastname</label>
+            <input list="listLastname" type="text" class="form__input form__input--small" id="lastname" name="lastname">
+            <datalist type="text" class="form__input form__input--small" id="listLastname" ></datalist> 
 
-            <label class="transfer__label" for="lastname">Receiver lastname</label>
-            <input type="text" class="transfer__input" id="lastname" name="lastname">
-
-            <label class="transfer__label" for="reason">Reason</label>
-            <select class="transfer__input" id="reason" name="reason">
-                <option class="transfer__option" value="Development help">Development help</option>
+            <label class="form__label form__label--small" for="reason">Reason</label>
+            <select class="form__input form__input--small" id="reason" name="reason">
+                <option value="Development help">Development help</option>
                 <option value="Design help">Design help</option>
                 <option value="Feedback">Feedback</option>
                 <option value="Meeting deadlines">Meeting deadlines</option>
                 <option value="Other">Other</option>
             </select>
             
-            <label class="transfer__label" for="message">Message</label>
-            <input type="text" class="transfer__input" id="message" name="message">
+            <label class="form__label form__label--small" for="message">Message</label>
+            <input type="text" class="form__input form__input--small" id="message" name="message">
 
             
             <a class="btn" href="" id="sendCoins">send coins</a>
@@ -79,7 +78,7 @@
         </a>
 
         <a class="menu__link" href="">
-            <img class="menu__img" src="images/logout.svg" alt="logout">
+            <img class="menu__img" id="logout" src="images/logout.svg" alt="logout">
             <p>Logout</p>
         </a>
 
