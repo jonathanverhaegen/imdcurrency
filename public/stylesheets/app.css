@@ -56,6 +56,9 @@
   font-family: "Comfortaa", cursive;
   color: #C83E4D; }
 
+.form__option {
+  font-family: "Comfortaa", cursive; }
+
 .hidden {
   display: none; }
 

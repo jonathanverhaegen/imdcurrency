@@ -97,3 +97,70 @@ logout.addEventListener("click", (e) => {
     localStorage.clear();
     window.location.href = "login.html";
 })
+
+//list van de voornamen in de datalink zetten
+
+const listFirstnames = () => {
+    fetch(url + '/api/v1/users', {
+        "headers": {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+            }).then(result => {
+                return result.json();
+            }).then(json => {
+                let users = json.user;
+                
+                users.forEach((user)=>{
+                    let firstnames = document.createElement("option");
+                    firstnames.className = "form__option"
+                    firstnames.innerHTML = user.firstname;
+                    document.querySelector("#listFirstname").appendChild(firstnames);
+                    
+                })    
+            }).catch(error => {
+    
+                console.log(error)
+    
+            })
+}
+
+//kijken welke voornaam er is ingeven en op basis daarvan de achternamen zoeken 
+
+const listLastnames = () => {
+    let firstname = document.querySelector("#firstname").value;
+    
+    fetch(url + '/api/v1/users/firstname/' + firstname, {
+        "headers": {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+            }).then(result => {
+                return result.json();
+            }).then(json => {
+                let users = json.user;
+                
+                users.forEach((user)=>{
+                    let lastnames = document.createElement("option");
+                    lastnames.className = "form__option"
+                    lastnames.innerHTML = user.lastname;
+                    document.querySelector("#listLastname").appendChild(lastnames);
+                })    
+            }).catch(error => {
+    
+                console.log(error)
+    
+            })
+}
+
+//bij het opstarten van de pagina wordt er een lijst gemaakt 
+
+listFirstnames();
+
+//als 
+document.querySelector("#firstname").addEventListener("change", (e)=>{
+    listLastnames();
+})
+
+
+
+
+    

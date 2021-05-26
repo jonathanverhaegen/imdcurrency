@@ -8,7 +8,7 @@ const url = "http://localhost:3000";
 
 
 
-fetch(url + '/api/v1/users', {
+fetch(url + '/api/v1/users/user', {
     "headers": {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
         }

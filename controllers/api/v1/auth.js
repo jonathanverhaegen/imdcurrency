@@ -14,7 +14,7 @@ const signup = async (req,res,next) => {
 
     let endEmail = username.split("@");
 
-    if(endEmail[1] === "student.thomasmore.be"){
+    if(endEmail[1] === "student.thomasmore.be" || endEmail[1] === "thomasmore.be"){
         const user = new User({firstname: firstname, lastname: lastname, username: username, coins: coins});
             await user.setPassword(password);
             await user.save().then(result =>{
@@ -39,7 +39,7 @@ const signup = async (req,res,next) => {
     }else{
         res.json({
             "status": "error",
-            "message": "Please register with a @student.thomasmore email"
+            "message": "Please register with a thomasmore email"
         })
     }
 
