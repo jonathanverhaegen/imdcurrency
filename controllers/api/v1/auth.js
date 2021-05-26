@@ -12,29 +12,38 @@ const signup = async (req,res,next) => {
     let password = req.body.password;
     let coins = 50;
 
-    const user = new User({firstname: firstname, lastname: lastname, username: username, coins: coins});
-    await user.setPassword(password);
-    await user.save().then(result =>{
+    let endEmail = username.split("@");
 
-        
+    if(endEmail[1] === "student.thomasmore.be"){
+        const user = new User({firstname: firstname, lastname: lastname, username: username, coins: coins});
+            await user.setPassword(password);
+            await user.save().then(result =>{
 
-        let token = jwt.sign({
-            uid: result._id,
-            email: result.username
-        },'MyVerySecretWord');
+            let token = jwt.sign({
+                uid: result._id,
+                email: result.username
+            },'MyVerySecretWord');
         
-        res.json({
-            "status": "success",
-            "data": {
-                "token": token
-            }
+            res.json({
+                "status": "success",
+                "data": {
+                    "token": token
+                }
+            })
+        }).catch(error => {
+            res.json({
+                "status": "error",
+                "message": error
+            })
         })
-    }).catch(error => {
+    }else{
         res.json({
             "status": "error",
-            "message": error
+            "message": "Please register with a @student.thomasmore email"
         })
-    })
+    }
+
+    
 }
 
 const login = async (req,res,next) =>{

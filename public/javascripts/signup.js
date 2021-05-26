@@ -33,8 +33,9 @@ btnSignup.addEventListener("click", function(e){
                 localStorage.setItem("token", token);
                 window.location.href = "index.html";
             }else{
+                console.log(json);
                 let feedback = document.querySelector(".form__alert");
-                feedback.textContent = "Something went wrong";
+                feedback.textContent = json.message;
                 feedback.classList.remove("hidden");
             }
         })
