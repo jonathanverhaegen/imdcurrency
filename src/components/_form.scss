@@ -8,7 +8,7 @@
     margin-top: $xl;
     display:flex;
     flex-direction: column;
-    
+    padding-bottom: $xxl;  
 }
 
 .form__label{
@@ -16,6 +16,10 @@
     color: $jet;
     font-size: $plainText;
     margin-bottom: $small;
+}
+
+.form__label--small{
+    text-align:center;
 }
 
 .form__input{
@@ -26,7 +30,21 @@
     margin-bottom: $med;
     height: $lg;
     padding-left: $small;
+    font-family: $fontImdcoin;
 }
+
+.form__input--small{
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: $lg;
+}
+
+.form__input--number{
+    width:30%;
+}
+
+
 
 
 
