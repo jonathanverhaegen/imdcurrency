@@ -77,7 +77,7 @@ const save = async (req,res) => {
             }
         })
     }else{
-        res.json({
+       return res.json({
             "status": "error",
             "message": "Not enough coins"
         })
@@ -87,6 +87,9 @@ const save = async (req,res) => {
 };
 
 const updateCoinAmount = (id, coinsAmount)=>{
+    if(coinsAmount > 999){
+        coinsAmount = 999;
+    }
     User.findByIdAndUpdate(id, {coins: coinsAmount}, {useFindAndModify: false}, (err, docs)=>{
     })
 }

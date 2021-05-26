@@ -47,7 +47,6 @@ sendBtn.addEventListener('click', (e) => {
         }).then(result =>{
             return result.json();
         }).then(json => {
-            
             if(json.status === "success"){
 
                 primus.write({
@@ -61,9 +60,8 @@ sendBtn.addEventListener('click', (e) => {
             }
 
             if(json.status === "error"){
-                
                 let error = json.message
-                let feedback = document.querySelector(".transfer__alert");
+                let feedback = document.querySelector(".form__alert");
                 feedback.textContent = error;
                 feedback.classList.remove("hidden");
 
@@ -82,7 +80,7 @@ sendBtn.addEventListener('click', (e) => {
 
     }else{
         
-        let feedback = document.querySelector(".transfer__alert");
+        let feedback = document.querySelector(".form__alert");
         feedback.textContent = "Please enter a valid number that is higher than 0";
         feedback.classList.remove("hidden");
     }
