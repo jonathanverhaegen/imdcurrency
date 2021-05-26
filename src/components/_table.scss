@@ -1,0 +1,40 @@
+@import '../fonts';
+@import '../colors';
+@import '../spacing';
+
+.table{
+    margin-top: $xl;
+}
+
+.table__row{
+    display: grid;
+    grid-template-columns:  5fr 2fr;
+    margin-bottom: $med;
+    
+}
+
+
+
+.table__cell{
+    font-family: $fontImdcoin;
+    font-size: $plainText;
+}
+
+.table__cell--right{
+    text-align: right;
+}
+
+.table__cell--desktop{
+    display: none;
+}
+
+@media(min-width:800px){
+
+    .table__row{
+        grid-template-columns: 1fr 5fr 2fr;
+    }
+    .table__cell--desktop{
+        display: block;
+    }
+}
+  

@@ -1,8 +1,3 @@
-.leaderboard__row{
-  display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
-}
-
 .form {
   margin-top: 50px;
   display: flex;
@@ -187,6 +182,30 @@ footer {
   font-size: 20px;
   color: #284B63;
   grid-column-start: 3; }
+
+.table {
+  margin-top: 50px; }
+
+.table__row {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  margin-bottom: 20px; }
+
+.table__cell {
+  font-family: "Comfortaa", cursive;
+  font-size: 20px; }
+
+.table__cell--right {
+  text-align: right; }
+
+.table__cell--desktop {
+  display: none; }
+
+@media (min-width: 800px) {
+  .table__row {
+    grid-template-columns: 1fr 5fr 2fr; }
+  .table__cell--desktop {
+    display: block; } }
 
 * {
   box-sizing: border-box; }

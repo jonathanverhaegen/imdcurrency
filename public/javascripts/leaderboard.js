@@ -18,7 +18,10 @@ let addToLeaderboard = (json) => {
 document.querySelector("#leaderboard").innerHTML = "";
     $position = 1;
     json.transfer.forEach((e) => {
-        var record = `<li class="leaderboard__row"><span class="leaderboard__cell">${$position}</span><span class="leaderboard__cell">${e.firstname} ${e.lastname}</span><span class="leaderboard__cell">${e.coins} coins</span></li>`;
+        var record = `<li class="table__row">
+        <span class="table__cell table__cell--desktop">${$position}</span>
+        <span class="table__cell">${e.firstname} ${e.lastname}</span>
+        <span class="table__cell table__cell--right">${e.coins} coins</span></li>`;
         document.querySelector("#leaderboard").insertAdjacentHTML('beforeend', record);
         $position++;
     })
