@@ -51,3 +51,10 @@ primus.on('data', (json)=> {
 
 // Initial leaderboard load
 loadLeaderboard();
+
+// Logout
+logout.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    window.location.href = "login.html";
+})

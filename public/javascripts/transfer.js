@@ -90,3 +90,10 @@ sendBtn.addEventListener('click', (e) => {
     
     
 })
+
+// Logout
+logout.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    window.location.href = "login.html";
+})
