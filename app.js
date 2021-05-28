@@ -6,10 +6,14 @@ var logger = require('morgan');
 
 const cors = require('cors');
 
+const config = require('config');
+
 
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb://localhost:27017/imdcoin', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.dbconn || config.get('Database.conn'), {useNewUrlParser: true, useUnifiedTopology: true});
+
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/api/v1/users');

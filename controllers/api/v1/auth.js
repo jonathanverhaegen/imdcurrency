@@ -1,6 +1,7 @@
 const User = require("../../../models/users");
 const passport = require('../../../passport/passport');
 var jwt = require('jsonwebtoken');
+const config = require('config');
 
 const signup = async (req,res,next) => {
 
@@ -22,7 +23,7 @@ const signup = async (req,res,next) => {
             let token = jwt.sign({
                 uid: result._id,
                 email: result.username
-            },'MyVerySecretWord');
+            },config.get("jwt.secret"));
         
             res.json({
                 "status": "success",
@@ -61,7 +62,7 @@ const login = async (req,res,next) =>{
         let token = jwt.sign({
             uid: result.user._id,
             email: result.user.username
-        },'MyVerySecretWord');
+        },config.get("jwt.secret"));
 
         return res.json({
             "status": "success",
