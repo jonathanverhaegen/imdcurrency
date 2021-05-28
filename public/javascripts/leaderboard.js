@@ -3,7 +3,7 @@ if(localStorage.getItem('token') === null){
     window.location.href = "login.html";    
 }
 
-var url = "http://localhost:3000"
+var url = process.env.url;
 
 primus = Primus.connect(url, {
     reconnect: {

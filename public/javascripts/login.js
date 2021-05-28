@@ -6,8 +6,9 @@ btnLogin.addEventListener("click", function(e){
     
     let email = document.querySelector("#email").value;
     let password = document.querySelector("#password").value;
+    const url = process.env.url;
 
-    fetch('http://localhost:3000/api/v1/acounts/login', {
+    fetch(url+'/api/v1/acounts/login', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'

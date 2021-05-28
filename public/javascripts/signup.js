@@ -1,5 +1,5 @@
 let btnSignup = document.querySelector(".btn");
-
+const url = process.env.url;
 
 
 btnSignup.addEventListener("click", function(e){
@@ -13,7 +13,7 @@ btnSignup.addEventListener("click", function(e){
 
     
 
-    fetch('http://localhost:3000/api/v1/acounts/signup', {
+    fetch(url+'/api/v1/acounts/signup', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
