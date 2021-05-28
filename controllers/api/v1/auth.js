@@ -22,7 +22,7 @@ const signup = async (req,res,next) => {
             let token = jwt.sign({
                 uid: result._id,
                 email: result.username
-            },'MyVerySecretWord');
+            },'jwt.secret');
         
             res.json({
                 "status": "success",
@@ -61,7 +61,7 @@ const login = async (req,res,next) =>{
         let token = jwt.sign({
             uid: result.user._id,
             email: result.user.username
-        },'MyVerySecretWord');
+        },'jwt.secret');
 
         return res.json({
             "status": "success",
