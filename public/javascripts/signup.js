@@ -13,7 +13,7 @@ btnSignup.addEventListener("click", function(e){
 
     
 
-    fetch('https://imdcoin-imd.herokuapp.com//api/v1/acounts/signup', {
+    fetch('https://imdcoin-imd.herokuapp.com/api/v1/acounts/signup', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
