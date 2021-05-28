@@ -3,7 +3,7 @@ if(localStorage.getItem('token') === null){
     window.location.href = "login.html";    
 }
 
-var url = process.env.url;
+var url = 'https://imdcoin-mechelen.herokuapp.com/';
 
 primus = Primus.connect(url, {
     reconnect: {

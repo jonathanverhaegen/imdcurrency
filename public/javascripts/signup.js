@@ -1,5 +1,5 @@
 let btnSignup = document.querySelector(".btn");
-const url = process.env.url;
+const url = 'https://imdcoin-mechelen.herokuapp.com/';
 
 
 btnSignup.addEventListener("click", function(e){

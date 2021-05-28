@@ -6,7 +6,7 @@ btnLogin.addEventListener("click", function(e){
     
     let email = document.querySelector("#email").value;
     let password = document.querySelector("#password").value;
-    const url = process.env.url;
+    const url = 'https://imdcoin-mechelen.herokuapp.com/s';
 
     fetch(url+'/api/v1/acounts/login', {
         method: 'post',
