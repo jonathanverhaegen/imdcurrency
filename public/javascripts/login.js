@@ -7,7 +7,7 @@ btnLogin.addEventListener("click", function(e){
     let email = document.querySelector("#email").value;
     let password = document.querySelector("#password").value;
 
-    fetch('http://localhost:3000/api/v1/acounts/login', {
+    fetch('https://imdcoin-imd.herokuapp.com/api/v1/acounts/login', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'

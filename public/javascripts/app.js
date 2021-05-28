@@ -4,7 +4,7 @@ if(localStorage.getItem('token') === null){
     window.location.href = "login.html";    
 }
 
-const url = "http://localhost:3000";
+const url = "https://imdcoin-imd.herokuapp.com";
 
 
 

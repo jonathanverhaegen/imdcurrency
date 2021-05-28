@@ -1,0 +1,8 @@
+{
+    "Database":{
+        "conn": "mongodb+srv://imdCoin:63TB*8zk@cluster0.hcioz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    },
+    "jwt":{
+        "secret": "UhjdjVGFHgdfs"
+    }
+}
