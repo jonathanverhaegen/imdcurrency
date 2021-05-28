@@ -1,7 +1,5 @@
 {
-    "Database":{
-        "conn": "mongodb+srv://jonathanverhaegen:J6JbE24nBM@cluster0.ghtml.mongodb.net/imdcoin?retryWrites=true&w=majority"
-    },
+    
     "jwt":{
         "secret": "MyVerySecretWord"
     }
