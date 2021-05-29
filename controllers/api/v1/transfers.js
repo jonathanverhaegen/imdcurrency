@@ -47,6 +47,13 @@ const save = async (req,res) => {
     let text = req.body.text;
 
     if(senderId === receiverId){
+        return res.json({
+            "status": "error",
+            "message": "Can't send coins to yourself, you greedy bastard!"
+        })
+    }else{
+
+    
 
     const transfer = new Transfer
     ({senderId: senderId, receiverId: receiverId, amount: amount, reason: reason, text: text});
@@ -85,13 +92,8 @@ const save = async (req,res) => {
         })
     }
     
-    
-}else{
-    return res.json({
-        "status": "error",
-        "message": "Can't send coins to yourself, you greedy bastard!"
-    })
-}
+} 
+
 };
 
 const updateCoinAmount = (id, coinsAmount)=>{
