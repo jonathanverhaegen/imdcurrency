@@ -46,7 +46,7 @@ const save = async (req,res) => {
     let reason = req.body.reason;
     let text = req.body.text;
 
-    if(senderId !== receiverId){
+    if(senderId === receiverId){
 
     const transfer = new Transfer
     ({senderId: senderId, receiverId: receiverId, amount: amount, reason: reason, text: text});
