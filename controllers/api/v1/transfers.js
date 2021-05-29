@@ -46,13 +46,7 @@ const save = async (req,res) => {
     let reason = req.body.reason;
     let text = req.body.text;
 
-    if(senderId === receiverId){
-        return res.json({
-            "status": "error",
-            "message": "Can't send coins to yourself, you greedy bastard!"
-        })
-    }else{
-
+    
     
 
     const transfer = new Transfer
@@ -92,7 +86,7 @@ const save = async (req,res) => {
         })
     }
     
-} 
+
 
 };
 
